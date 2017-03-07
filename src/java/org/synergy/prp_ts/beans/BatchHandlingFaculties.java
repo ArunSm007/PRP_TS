@@ -1,63 +1,48 @@
 package org.synergy.prp_ts.beans;
 
 public class BatchHandlingFaculties {
-        private int type;
-	private String batchId;
+        private int sno;
 	private String facultyId;
 	private String moduleId;
 	private int moduleType;
 
-    public int getType() {
-        return type;
-    }
+        public int getSno() {
+            return sno;
+        }
 
-    public void setType(int type) {
-        this.type = type;
-    }
+        public void setSno(int sno) {
+            this.sno = sno;
+        }
 
-    public String getBatchId() {
-        return batchId;
-    }
+        public String getFacultyId() {
+            return facultyId;
+        }
 
-    public void setBatchId(String batchId) {
-        this.batchId = batchId;
-    }
+        public void setFacultyId(String facultyId) {
+            this.facultyId = facultyId;
+        }
 
-    public String getFacultyId() {
-        return facultyId;
-    }
+        public String getModuleId() {
+            return moduleId;
+        }
 
-    public void setFacultyId(String facultyId) {
-        this.facultyId = facultyId;
-    }
+        public void setModuleId(String moduleId) {
+            this.moduleId = moduleId;
+        }
 
-    public String getModuleId() {
-        return moduleId;
-    }
+        public int getModuleType() {
+            return moduleType;
+        }
 
-    public void setModuleId(String moduleId) {
-        this.moduleId = moduleId;
-    }
-
-    public int getModuleType() {
-        return moduleType;
-    }
-
-    public void setModuleType(int moduleType) {
-        this.moduleType = moduleType;
-    }
-
-        
+        public void setModuleType(int moduleType) {
+            this.moduleType = moduleType;
+        }
 
 	public String[] getAll() {
 		// TODO - implement BatchHandlingFaculties.getAll
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param details
-	 */
 	public void setAll(String[] details) {
 		// TODO - implement BatchHandlingFaculties.setAll
 		throw new UnsupportedOperationException();

@@ -2,48 +2,35 @@ package org.synergy.prp_ts.beans;
 
 public class CategoryDetails {
 
-	private int categoryId;
-	private String categoryName;
+    private int categoryId;
+    private String categoryName;
 
-	public void getCategoryId() {
-		// TODO - implement CategoryDetails.getCategoryId
-		throw new UnsupportedOperationException();
-	}
+    public int getCategoryId() {
+        return categoryId;
+    }
 
-	/**
-	 * 
-	 * @param categoryId
-	 */
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public void getCategoryName() {
-		// TODO - implement CategoryDetails.getCategoryName
-		throw new UnsupportedOperationException();
-	}
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	/**
-	 * 
-	 * @param categoryName
-	 */
-	public void setCategoryName(String categoryName) {
-		// TODO - implement CategoryDetails.setCategoryName
-		throw new UnsupportedOperationException();
-	}
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
-	public String[] getAll() {
-		// TODO - implement CategoryDetails.getAll
-		throw new UnsupportedOperationException();
-	}
+    
 
-	/**
-	 * 
-	 * @param details
-	 */
-	public void setAll(String[] details) {
-		// TODO - implement CategoryDetails.setAll
-		throw new UnsupportedOperationException();
-	}
+    public String[] getAll() {
+            // TODO - implement CategoryDetails.getAll
+            throw new UnsupportedOperationException();
+    }
+
+    public void setAll(String[] details) {
+            // TODO - implement CategoryDetails.setAll
+            throw new UnsupportedOperationException();
+    }
 
 }

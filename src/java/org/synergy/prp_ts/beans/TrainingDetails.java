@@ -1,93 +1,79 @@
 package org.synergy.prp_ts.beans;
 
 import java.util.Date;
+import java.util.List;
 
 public class TrainingDetails {
 
 	private int trainingId;
-	private CategoryDetails category;
-	private StreamDetails stream;
+	private String categoryId;
+	private String streamId;
+        private String venueId;
+        private List<BatchDetails> batchDetailses;
 	private Date fromDate;
 	private Date toDate;
 
-	public void getTrainingId() {
-		// TODO - implement TrainingDetails.getTrainingId
-		throw new UnsupportedOperationException();
-	}
+        public String getVenueId() {
+            return venueId;
+        }
 
-	/**
-	 * 
-	 * @param trainingId
-	 */
-	public void setTrainingId(int trainingId) {
-		this.trainingId = trainingId;
-	}
+        public void setVenueId(String venueId) {
+            this.venueId = venueId;
+        }
 
-	public void getFromDate() {
-		// TODO - implement TrainingDetails.getFromDate
-		throw new UnsupportedOperationException();
-	}
+        public List<BatchDetails> getBatchDetailses() {
+            return batchDetailses;
+        }
 
-	public void getToDate() {
-		// TODO - implement TrainingDetails.getToDate
-		throw new UnsupportedOperationException();
-	}
+        public void setBatchDetailses(List<BatchDetails> batchDetailses) {
+            this.batchDetailses = batchDetailses;
+        }
+        
+        public int getTrainingId() {
+            return trainingId;
+        }
 
-	public CategoryDetails getCategory() {
-		// TODO - implement TrainingDetails.getCategory
-		throw new UnsupportedOperationException();
-	}
+        public void setTrainingId(int trainingId) {
+            this.trainingId = trainingId;
+        }
 
-	/**
-	 * 
-	 * @param category
-	 */
-	public void setCategory(CategoryDetails category) {
-		// TODO - implement TrainingDetails.setCategory
-		throw new UnsupportedOperationException();
-	}
+        public String getCategoryId() {
+            return categoryId;
+        }
 
-	public StreamDetails getStream() {
-		// TODO - implement TrainingDetails.getStream
-		throw new UnsupportedOperationException();
-	}
+        public void setCategoryId(String categoryId) {
+            this.categoryId = categoryId;
+        }
 
-	/**
-	 * 
-	 * @param stream
-	 */
-	public void setStream(StreamDetails stream) {
-		// TODO - implement TrainingDetails.setStream
-		throw new UnsupportedOperationException();
-	}
+        public String getStreamId() {
+            return streamId;
+        }
 
-	/**
-	 * 
-	 * @param fromDate
-	 */
-	public void setFromDate(Date fromDate) {
-		// TODO - implement TrainingDetails.setFromDate
-		throw new UnsupportedOperationException();
-	}
+        public void setStreamId(String streamId) {
+            this.streamId = streamId;
+        }
 
-	/**
-	 * 
-	 * @param toDate
-	 */
-	public void setToDate(Date toDate) {
-		// TODO - implement TrainingDetails.setToDate
-		throw new UnsupportedOperationException();
-	}
+        public Date getFromDate() {
+            return fromDate;
+        }
+
+        public void setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+        }
+
+        public Date getToDate() {
+            return toDate;
+        }
+
+        public void setToDate(Date toDate) {
+            this.toDate = toDate;
+        }
 
 	public String[] getAll() {
 		// TODO - implement TrainingDetails.getAll
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param details
-	 */
 	public void setAll(String[] details) {
 		// TODO - implement TrainingDetails.setAll
 		throw new UnsupportedOperationException();

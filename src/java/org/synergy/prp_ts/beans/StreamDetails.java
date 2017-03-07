@@ -2,8 +2,8 @@ package org.synergy.prp_ts.beans;
 
 public class StreamDetails {
 
-	private int streamId;
-	private String streamName;
+    private int streamId;
+    private String streamName;
 
     public int getStreamId() {
         return streamId;

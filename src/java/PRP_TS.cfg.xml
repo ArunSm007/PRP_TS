@@ -4,96 +4,132 @@
  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
   
  <hibernate-mapping>  
- <class name="org.synergy.prp_ts.beans.StreamDetails" table="StreamDetails">  
-    <id name="streamId">  
+ 
+  <class name="org.synergy.prp_ts.beans.AssessmentDetails" table="AssessmentDetails">  
+    <id name="assessmentId">  
         <generator class="increment"></generator>  
     </id>  
-    <property name="streamName"></property>  
- </class> 
- <class name="org.synergy.prp_ts.beans.AssessmentDetails" table="AssessmentDetails">  
-    <id name="assessmentId">  
-    <generator class="increment"></generator>  
-    </id>  
     <property name="assessmentName"></property> 
-    <property name="module"></property> 
-    <property name="moduleType"></property>  
- </class> 
- <class name="org.synergy.prp_ts.beans.BatchDetails" table="BatchDetails">  
-    <id name="batchId">  
-    <!--<generator class="increment"></generator>-->  
-    </id>  
-    <property name="batchSize"></property> 
-    <property name="venue"></property> 
-    <property name="category"></property> 
-    <property name="stream"></property>  
- </class>   
-    <class name="org.synergy.prp_ts.beans.BatchEmployeeDetails" table="BatchEmployeeDetails">  
-    <id name="employeeId">  
-    <!--<generator class="increment"></generator>-->  
-    </id>  
-    <property name="employeeName"></property> 
-    <property name="batch"></property>  
- </class> 
-  </class>   
-    <class name="org.synergy.prp_ts.beans.CategoryDetails" table="CategoryDetails">  
-    <id name="categoryId">  
-    <!--<generator class="increment"></generator>-->  
-    </id>  
-    <property name="categoryName"></property> 
- </class>   
+  </class> 
+ 
   <class name="org.synergy.prp_ts.beans.SubModuleDetails" table="SubModuleDetails">
       <id name="subModuleId">
           <generator class="increment"></generator>   
       </id>
       <property name="subModuleName"></property>
-      <property name="assesment"></property>
       <property name="miniprojectDuration"></property>
       <property name="practiceDuration"></property>
+      <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="moduleId" />
+            <index column="type"/>
+            <one-to-many class="org.synergy.prp_ts.beans.AssessmentDetails"/>
+      </list>
   </class>  
-  <class name="org.synergy.prp_ts.beans.TrainingDetails" table="TrainingDetails">
-      <id name="trainingId">
-          <generator class="increment"></generator>
-      </id>
-      <property name="category"></property>
-      <property name="stream"></property>
-      <property name="fromDate"></property>
-      <property name="toDate"></property>      
-      
-  </class>     
-  <class name="org.synergy.prp_ts.beans.VenueDetails" table="VenueDetails" >
-      <id name="venueId">
-          <generator class="increment"></generator>
-      </id>
-      <property name="venueName"></property>
-      <property name="venueNumber"></property>
-   </class>
+ 
    <class name="org.synergy.prp_ts.beans.ModuleDetails" table="ModuleDetails">
        <id name="moduleId">
            <generator class="increment"></generator>
        </id>
        <property name="moduleName"></property>
-       <property name="assessment"></property>
-       <property name="logicBuildingDuration"></property>
+       <property name="logicalBuildingDuration"></property>
        <property name="moduleDuration"></property>
-       <property name="category"></property>
-       <property name="stream"></property>
-       <property name="subModules"></property>
+       <property name="categoryId"></property>
+       <property name="streamId"></property>
+       <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="moduleId" />
+            <index column="type"/>
+            <one-to-many class="org.synergy.prp_ts.beans.AssessmentDetails"/>
+        </list>
+        <list name="subModules" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="moduleId" />
+            <index column="type"/>
+            <one-to-many class="org.synergy.prp_ts.beans.SubModuleDetails"/>
+        </list>
    </class>
-   <class name="org.synergy.prp_ts.beans.FacultyDetails" table="FacultyDetails">
-       <id name="wcfId">
-           <generator class="increment"></generator>
-       </id>
-       <property name="name"></property>
-   </class>
- </class> 
+   
+   <class name="org.synergy.prp_ts.beans.TrainingDetails" table="TrainingDetails">
+      <id name="trainingId">
+          <generator class="increment"></generator>
+      </id>
+      <property name="categoryId"></property>
+      <property name="streamId"></property>
+      <property name="venueId"></property>
+      <property name="fromDate"></property>
+      <property name="toDate"></property>
+      <list name="batchDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="trainingId" />
+            <index column="type"/>
+            <one-to-many class="org.synergy.prp_ts.beans.BatchDetails"/>
+      </list>      
+  </class> 
   
- <class name="org.synergy.prp_ts.beans.BatchHandlingFaculties" table="BatchHandlingFaculties">  
-    <id name="type">  
-        <generator class="increment"></generator>  
+  <class name="org.synergy.prp_ts.beans.BatchDetails" table="BatchDetails">  
+    <id name="batchId">  
+        <generator class="assigned"></generator>  
     </id>  
-    <property name="batchId"></property>  
+    <property name="batchSize"></property> 
+    <list name="batchEmployeeDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+        <key column="batchId" />
+        <index column="type"/>
+        <one-to-many class="org.synergy.prp_ts.beans.BatchEmployeeDetails"/>
+    </list>
+    <list name="batchHandlingFacultieses" cascade="save-update,delete,delete-orphan" lazy="false">
+        <key column="batchId" />
+        <index column="type"/>
+        <one-to-many class="org.synergy.prp_ts.beans.BatchHandlingFaculties"/>
+    </list>  
+  </class>  
+ 
+  <class name="org.synergy.prp_ts.beans.BatchEmployeeDetails" table="BatchEmployeeDetails">  
+    <id name="employeeId">  
+        <generator class="assigned"></generator>  
+    </id>  
+    <property name="employeeName"></property>   
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.BatchHandlingFaculties" table="BatchHandlingFaculties">  
+    <id name="sno">  
+        <generator class="increment"></generator>  
+    </id>   
     <property name="facultyId"></property> 
     <property name="moduleId"></property> 
     <property name="moduleType"></property> 
- </class>
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.StreamDetails" table="StreamDetails">  
+    <id name="streamId">  
+        <generator class="assigned"></generator>  
+    </id>  
+    <property name="streamName"></property>  
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.CategoryDetails" table="CategoryDetails">  
+    <id name="categoryId">  
+        <generator class="assigned"></generator>  
+    </id>  
+    <property name="categoryName"></property> 
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.VenueDetails" table="VenueDetails" >
+      <id name="venueId">
+          <generator class="assigned"></generator>
+      </id>
+      <property name="venueName"></property>
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.TrainerDetails" table="TrainerDetails">
+       <id name="wcfId">
+           <generator class="assigned"></generator>
+       </id>
+       <property name="name"></property>
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.CategoryStreamDetails" table="CategoryStreamDetails">
+       <id name="sno">
+           <generator class="increment"></generator>
+       </id>
+       <property name="categoryId"></property>
+       <property name="streamId"></property>
+  </class>
+  
  </hibernate-mapping> 

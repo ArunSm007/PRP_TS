@@ -4,134 +4,86 @@ import java.util.List;
 
 public class ModuleDetails {
 
-	private String moduleId;
+	private int moduleId;
 	private String moduleName;
-	private AssessmentDetails assessment;
+	private List<AssessmentDetails> assessments;
 	private float logicalBuildingDuration;
 	private float moduleDuration;
-	private CategoryDetails category;
-	private StreamDetails stream;
+	private String categoryId;
+	private String streamId;
 	private List<SubModuleDetails> subModules;
 
-	public void getModuleId() {
-		// TODO - implement ModuleDetails.getModuleId
-		throw new UnsupportedOperationException();
-	}
+    public int getModuleId() {
+        return moduleId;
+    }
 
-	public void getModuleName() {
-		// TODO - implement ModuleDetails.getModuleName
-		throw new UnsupportedOperationException();
-	}
+    public void setModuleId(int moduleId) {
+        this.moduleId = moduleId;
+    }
 
-	public void getLogicalBuildingDuration() {
-		// TODO - implement ModuleDetails.getLogicalBuildingDuration
-		throw new UnsupportedOperationException();
-	}
+    public String getModuleName() {
+        return moduleName;
+    }
 
-	public void getModuleDuration() {
-		// TODO - implement ModuleDetails.getModuleDuration
-		throw new UnsupportedOperationException();
-	}
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
 
-	/**
-	 * 
-	 * @param moduleId
-	 */
-	public void setModuleId(String moduleId) {
-		// TODO - implement ModuleDetails.setModuleId
-		throw new UnsupportedOperationException();
-	}
+    public List<AssessmentDetails> getAssessments() {
+        return assessments;
+    }
 
-	/**
-	 * 
-	 * @param moduleName
-	 */
-	public void setModuleName(String moduleName) {
-		// TODO - implement ModuleDetails.setModuleName
-		throw new UnsupportedOperationException();
-	}
+    public void setAssessments(List<AssessmentDetails> assessments) {
+        this.assessments = assessments;
+    }
 
-	public AssessmentDetails getAssessment() {
-		// TODO - implement ModuleDetails.getAssessment
-		throw new UnsupportedOperationException();
-	}
+    public float getLogicalBuildingDuration() {
+        return logicalBuildingDuration;
+    }
 
-	/**
-	 * 
-	 * @param assessment
-	 */
-	public void setAssessment(AssessmentDetails assessment) {
-		// TODO - implement ModuleDetails.setAssessment
-		throw new UnsupportedOperationException();
-	}
+    public void setLogicalBuildingDuration(float logicalBuildingDuration) {
+        this.logicalBuildingDuration = logicalBuildingDuration;
+    }
 
-	/**
-	 * 
-	 * @param logicalBuildingDuration
-	 */
-	public void setLogicalBuildingDuration(float logicalBuildingDuration) {
-		// TODO - implement ModuleDetails.setLogicalBuildingDuration
-		throw new UnsupportedOperationException();
-	}
+    public float getModuleDuration() {
+        return moduleDuration;
+    }
 
-	/**
-	 * 
-	 * @param moduleDuration
-	 */
-	public void setModuleDuration(float moduleDuration) {
-		// TODO - implement ModuleDetails.setModuleDuration
-		throw new UnsupportedOperationException();
-	}
+    public void setModuleDuration(float moduleDuration) {
+        this.moduleDuration = moduleDuration;
+    }
 
-	public CategoryDetails getCategory() {
-		return this.category;
-	}
+    public String getCategoryId() {
+        return categoryId;
+    }
 
-	/**
-	 * 
-	 * @param category
-	 */
-	public void setCategory(CategoryDetails category) {
-		this.category = category;
-	}
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public StreamDetails getStream() {
-		return this.stream;
-	}
+    public String getStreamId() {
+        return streamId;
+    }
 
-	/**
-	 * 
-	 * @param stream
-	 */
-	public void setStream(StreamDetails stream) {
-		this.stream = stream;
-	}
+    public void setStreamId(String streamId) {
+        this.streamId = streamId;
+    }
 
-	public String[] getAll() {
-		// TODO - implement ModuleDetails.getAll
-		throw new UnsupportedOperationException();
-	}
+    public List<SubModuleDetails> getSubModules() {
+        return subModules;
+    }
 
-	/**
-	 * 
-	 * @param details
-	 */
+    public void setSubModules(List<SubModuleDetails> subModules) {
+        this.subModules = subModules;
+    }
+
+        
 	public void setAll(String[] details) {
 		// TODO - implement ModuleDetails.setAll
-		throw new UnsupportedOperationException();
+		
 	}
-
-	public List<SubModuleDetails> getSubModules() {
-		// TODO - implement ModuleDetails.getSubModules
-		throw new UnsupportedOperationException();
+public String[] getAll() {
+		// TODO - implement ModuleDetails.setAll
+		return null;
 	}
-
-	/**
-	 * 
-	 * @param subModules
-	 */
-	public void setSubModules(List<SubModuleDetails> subModules) {
-		this.subModules = subModules;
-	}
-
 }

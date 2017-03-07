@@ -22,10 +22,7 @@ public class Main {
         SessionFactory sf=cfg.buildSessionFactory();
         Session s=sf.openSession();
         Transaction t=s.beginTransaction();
-        StreamDetails sd=new StreamDetails();
-        sd.setStreamName("Arun");
-        s.saveOrUpdate(sd);
-        t.commit();
+        
         s.close();
 sf.close();
     }

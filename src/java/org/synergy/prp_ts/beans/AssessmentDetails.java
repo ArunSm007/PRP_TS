@@ -2,52 +2,25 @@ package org.synergy.prp_ts.beans;
 
 public class AssessmentDetails {
 
-	private String assessmentId;
+	private int assessmentId;
         private String assessmentName;
-	private ModuleDetails module;
-	private int moduleType;
 
-	public void getAssessmentId() {
-		// TODO - implement AssessmentDetails.getAssessmentId
-		
-	}
+    public int getAssessmentId() {
+        return assessmentId;
+    }
 
-	public void getModuleType() {
-		// TODO - implement AssessmentDetails.getModuleType
-		throw new UnsupportedOperationException();
-	}
+    public void setAssessmentId(int assessmentId) {
+        this.assessmentId = assessmentId;
+    }
 
-	/**
-	 * 
-	 * @param moduleType
-	 */
-	public void setModuleType(int moduleType) {
-		this.moduleType = moduleType;
-	}
+    public String getAssessmentName() {
+        return assessmentName;
+    }
 
-	/**
-	 * 
-	 * @param assessmentId
-	 */
-	public void setAssessmentId(String assessmentId) {
-		// TODO - implement AssessmentDetails.setAssessmentId
-		throw new UnsupportedOperationException();
-	}
-
-	public ModuleDetails getModule() {
-		// TODO - implement AssessmentDetails.getModule
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param module
-	 */
-	public void setModule(ModuleDetails module) {
-		// TODO - implement AssessmentDetails.setModule
-		throw new UnsupportedOperationException();
-	}
-
+    public void setAssessmentName(String assessmentName) {
+        this.assessmentName = assessmentName;
+    }
+	
 	public String[] getAll() {
 		// TODO - implement AssessmentDetails.getAll
 		throw new UnsupportedOperationException();

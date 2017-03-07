@@ -1,81 +1,45 @@
 package org.synergy.prp_ts.beans;
 
+import java.util.List;
+
 public class BatchDetails {
 
 	private String batchId;
 	private int batchSize;
-	private VenueDetails venue;
-	private CategoryDetails category;
-	private StreamDetails stream;
+	private List<BatchEmployeeDetails> batchEmployeeDetailses;
+        private List<BatchHandlingFaculties> batchHandlingFacultieses;
 
-	public void getBatchId() {
-		// TODO - implement BatchDetails.getBatchId
-		throw new UnsupportedOperationException();
-	}
+        public String getBatchId() {
+            return batchId;
+        }
 
-	public void getBatchSize() {
-		// TODO - implement BatchDetails.getBatchSize
-		throw new UnsupportedOperationException();
-	}
+        public void setBatchId(String batchId) {
+            this.batchId = batchId;
+        }
 
-	/**
-	 * 
-	 * @param batchSize
-	 */
-	public void setBatchSize(int batchSize) {
-		this.batchSize = batchSize;
-	}
+        public int getBatchSize() {
+            return batchSize;
+        }
 
-	/**
-	 * 
-	 * @param batchId
-	 */
-	public void setBatchId(String batchId) {
-		// TODO - implement BatchDetails.setBatchId
-		throw new UnsupportedOperationException();
-	}
+        public void setBatchSize(int batchSize) {
+            this.batchSize = batchSize;
+        }
 
-	public VenueDetails getVenue() {
-		// TODO - implement BatchDetails.getVenue
-		throw new UnsupportedOperationException();
-	}
+        public List<BatchEmployeeDetails> getBatchEmployeeDetailses() {
+            return batchEmployeeDetailses;
+        }
 
-	/**
-	 * 
-	 * @param venue
-	 */
-	public void setVenue(VenueDetails venue) {
-		// TODO - implement BatchDetails.setVenue
-		throw new UnsupportedOperationException();
-	}
+        public void setBatchEmployeeDetailses(List<BatchEmployeeDetails> batchEmployeeDetailses) {
+            this.batchEmployeeDetailses = batchEmployeeDetailses;
+        }
 
-	public CategoryDetails getCategory() {
-		// TODO - implement BatchDetails.getCategory
-		throw new UnsupportedOperationException();
-	}
+        public List<BatchHandlingFaculties> getBatchHandlingFacultieses() {
+            return batchHandlingFacultieses;
+        }
 
-	/**
-	 * 
-	 * @param category
-	 */
-	public void setCategory(CategoryDetails category) {
-		// TODO - implement BatchDetails.setCategory
-		throw new UnsupportedOperationException();
-	}
-
-	public StreamDetails getStream() {
-		// TODO - implement BatchDetails.getStream
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param stream
-	 */
-	public void setStream(StreamDetails stream) {
-		// TODO - implement BatchDetails.setStream
-		throw new UnsupportedOperationException();
-	}
+        public void setBatchHandlingFacultieses(List<BatchHandlingFaculties> batchHandlingFacultieses) {
+            this.batchHandlingFacultieses = batchHandlingFacultieses;
+        }
 
 	public String[] getAll() {
 		// TODO - implement BatchDetails.getAll

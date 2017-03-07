@@ -1,81 +1,56 @@
 package org.synergy.prp_ts.beans;
 
+import java.util.List;
+
 public class SubModuleDetails {
 
-	private String subModuleId;
-	private int subModuleName;
-	private AssessmentDetails assessment;
+	private int subModuleId;
+	private String subModuleName;
+        private List<AssessmentDetails> assessments;
 	private float miniprojectDuration;
 	private float practiceDuration;
 
-	public void getSubModuleId() {
-		// TODO - implement SubModuleDuration.getSubModuleId
-		throw new UnsupportedOperationException();
-	}
+    public int getSubModuleId() {
+        return subModuleId;
+    }
 
-	public void getSubModuleName() {
-		// TODO - implement SubModuleDuration.getSubModuleName
-		throw new UnsupportedOperationException();
-	}
+    public void setSubModuleId(int subModuleId) {
+        this.subModuleId = subModuleId;
+    }
 
-	/**
-	 * 
-	 * @param subModuleName
-	 */
-	public void setSubModuleName(int subModuleName) {
-		this.subModuleName = subModuleName;
-	}
+    public String getSubModuleName() {
+        return subModuleName;
+    }
 
-	public void getMiniprojectDuration() {
-		// TODO - implement SubModuleDuration.getMiniprojectDuration
-		throw new UnsupportedOperationException();
-	}
+    public void setSubModuleName(String subModuleName) {
+        this.subModuleName = subModuleName;
+    }
 
-	public void getPracticeDuration() {
-		// TODO - implement SubModuleDuration.getPracticeDuration
-		throw new UnsupportedOperationException();
-	}
+    public List<AssessmentDetails> getAssessments() {
+        return assessments;
+    }
 
-	/**
-	 * 
-	 * @param subModuleId
-	 */
-	public void setSubModuleId(String subModuleId) {
-		// TODO - implement SubModuleDuration.setSubModuleId
-		throw new UnsupportedOperationException();
-	}
+    public void setAssessments(List<AssessmentDetails> assessments) {
+        this.assessments = assessments;
+    }
 
-	public AssessmentDetails getAssessment() {
-		// TODO - implement SubModuleDuration.getAssessment
-		throw new UnsupportedOperationException();
-	}
+    public float getMiniprojectDuration() {
+        return miniprojectDuration;
+    }
 
-	/**
-	 * 
-	 * @param assessment
-	 */
-	public void setAssessment(AssessmentDetails assessment) {
-		// TODO - implement SubModuleDuration.setAssessment
-		throw new UnsupportedOperationException();
-	}
+    public void setMiniprojectDuration(float miniprojectDuration) {
+        this.miniprojectDuration = miniprojectDuration;
+    }
 
-	/**
-	 * 
-	 * @param miniprojectDuration
-	 */
-	public void setMiniprojectDuration(float miniprojectDuration) {
-		// TODO - implement SubModuleDuration.setMiniprojectDuration
-		throw new UnsupportedOperationException();
-	}
+    public float getPracticeDuration() {
+        return practiceDuration;
+    }
 
-	/**
-	 * 
-	 * @param practiceDuration
-	 */
-	public void setPracticeDuration(float practiceDuration) {
-		// TODO - implement SubModuleDuration.setPracticeDuration
-		throw new UnsupportedOperationException();
-	}
+    public void setPracticeDuration(float practiceDuration) {
+        this.practiceDuration = practiceDuration;
+    }
+
+	
 
 	public String[] getAll() {
 		// TODO - implement SubModuleDuration.getAll
