@@ -10,5 +10,49 @@
     </id>  
     <property name="streamName"></property>  
  </class>  
-         
+  <class name="org.synergy.prp_ts.beans.SubModuleDetails" table="SubModuleDetails">
+      <id name="subModuleId">
+          <generator class="increment"></generator>   
+      </id>
+      <property name="subModuleName"></property>
+      <property name="assesment"></property>
+      <property name="miniprojectDuration"></property>
+      <property name="practiceDuration"></property>
+  </class>  
+  <class name="org.synergy.prp_ts.beans.TrainingDetails" table="TrainingDetails">
+      <id name="trainingId">
+          <generator class="increment"></generator>
+      </id>
+      <property name="category"></property>
+      <property name="stream"></property>
+      <property name="fromDate"></property>
+      <property name="toDate"></property>      
+      
+  </class>     
+  <class name="org.synergy.prp_ts.beans.VenueDetails" table="VenueDetails" >
+      <id name="venueId">
+          <generator class="increment"></generator>
+      </id>
+      <property name="venueName"></property>
+      <property name="venueNumber"></property>
+   </class>
+   <class name="org.synergy.prp_ts.beans.ModuleDetails" table="ModuleDetails">
+       <id name="moduleId">
+           <generator class="increment"></generator>
+       </id>
+       <property name="moduleName"></property>
+       <property name="assessment"></property>
+       <property name="logicBuildingDuration"></property>
+       <property name="moduleDuration"></property>
+       <property name="category"></property>
+       <property name="stream"></property>
+       <property name="subModules"></property>
+   </class>
+   <class name="org.synergy.prp_ts.beans.FacultyDetails" table="FacultyDetails">
+       <id name="wcfId">
+           <generator class="increment"></generator>
+       </id>
+       <property name="name"></property>
+   </class>
+   
  </hibernate-mapping> 
