@@ -60,6 +60,11 @@
             <key column="trainingId" />
             <index column="type"/>
             <one-to-many class="org.synergy.prp_ts.beans.BatchDetails"/>
+      </list>
+      <list name="scheduleDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+            <key column="trainingId" />
+            <index column="type"/>
+            <one-to-many class="org.synergy.prp_ts.beans.ScheduleDetails"/>
       </list>      
   </class> 
   
@@ -130,6 +135,14 @@
        </id>
        <property name="categoryId"></property>
        <property name="streamId"></property>
+  </class>
+  
+  <class name="org.synergy.prp_ts.beans.ScheduleDetails" table="ScheduleDetails">
+       <id name="sno">
+           <generator class="increment"></generator>
+       </id>
+       <property name="currentDate"></property>
+       <property name="duration"></property>
   </class>
   
  </hibernate-mapping> 

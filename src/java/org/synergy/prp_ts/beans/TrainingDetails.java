@@ -10,8 +10,17 @@ public class TrainingDetails {
 	private String streamId;
         private String venueId;
         private List<BatchDetails> batchDetailses;
+        private List<ScheduleDetails> scheduleDetailses;
 	private Date fromDate;
 	private Date toDate;
+
+        public List<ScheduleDetails> getScheduleDetailses() {
+            return scheduleDetailses;
+        }
+
+        public void setScheduleDetailses(List<ScheduleDetails> scheduleDetailses) {
+            this.scheduleDetailses = scheduleDetailses;
+        }
 
         public String getVenueId() {
             return venueId;
