@@ -6,9 +6,39 @@
  <hibernate-mapping>  
  <class name="org.synergy.prp_ts.beans.StreamDetails" table="StreamDetails">  
     <id name="streamId">  
-    <generator class="increment"></generator>  
+   <!--<generator class="increment"></generator>-->  
     </id>  
     <property name="streamName"></property>  
  </class>  
-         
+ <class name="org.synergy.prp_ts.beans.AssessmentDetails" table="AssessmentDetails">  
+    <id name="assessmentId">  
+    <generator class="increment"></generator>  
+    </id>  
+    <property name="assessmentName"></property> 
+    <property name="module"></property> 
+    <property name="moduleType"></property>  
+ </class> 
+ <class name="org.synergy.prp_ts.beans.BatchDetails" table="BatchDetails">  
+    <id name="batchId">  
+    <!--<generator class="increment"></generator>-->  
+    </id>  
+    <property name="batchSize"></property> 
+    <property name="venue"></property> 
+    <property name="category"></property> 
+    <property name="stream"></property>  
+ </class>   
+    <class name="org.synergy.prp_ts.beans.BatchEmployeeDetails" table="BatchEmployeeDetails">  
+    <id name="employeeId">  
+    <!--<generator class="increment"></generator>-->  
+    </id>  
+    <property name="employeeName"></property> 
+    <property name="batch"></property>  
+ </class> 
+  </class>   
+    <class name="org.synergy.prp_ts.beans.CategoryDetails" table="CategoryDetails">  
+    <id name="categoryId">  
+    <!--<generator class="increment"></generator>-->  
+    </id>  
+    <property name="categoryName"></property> 
+ </class> 
  </hibernate-mapping> 

@@ -3,12 +3,13 @@ package org.synergy.prp_ts.beans;
 public class AssessmentDetails {
 
 	private String assessmentId;
+        private String assessmentName;
 	private ModuleDetails module;
 	private int moduleType;
 
 	public void getAssessmentId() {
 		// TODO - implement AssessmentDetails.getAssessmentId
-		throw new UnsupportedOperationException();
+		
 	}
 
 	public void getModuleType() {
