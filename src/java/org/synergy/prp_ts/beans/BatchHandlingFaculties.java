@@ -1,66 +1,53 @@
 package org.synergy.prp_ts.beans;
 
 public class BatchHandlingFaculties {
-
-	private BatchDetails batch;
-	private FacultyDetails faculty;
-	private ModuleDetails module;
+        private int type;
+	private String batchId;
+	private String facultyId;
+	private String moduleId;
 	private int moduleType;
 
-	public void getModuleType() {
-		// TODO - implement BatchHandlingFaculties.getModuleType
-		throw new UnsupportedOperationException();
-	}
+    public int getType() {
+        return type;
+    }
 
-	/**
-	 * 
-	 * @param moduleType
-	 */
-	public void setModuleType(int moduleType) {
-		this.moduleType = moduleType;
-	}
+    public void setType(int type) {
+        this.type = type;
+    }
 
-	public BatchDetails getBatch() {
-		// TODO - implement BatchHandlingFaculties.getBatch
-		throw new UnsupportedOperationException();
-	}
+    public String getBatchId() {
+        return batchId;
+    }
 
-	/**
-	 * 
-	 * @param batch
-	 */
-	public void setBatch(BatchDetails batch) {
-		// TODO - implement BatchHandlingFaculties.setBatch
-		throw new UnsupportedOperationException();
-	}
+    public void setBatchId(String batchId) {
+        this.batchId = batchId;
+    }
 
-	public FacultyDetails getFaculty() {
-		// TODO - implement BatchHandlingFaculties.getFaculty
-		throw new UnsupportedOperationException();
-	}
+    public String getFacultyId() {
+        return facultyId;
+    }
 
-	/**
-	 * 
-	 * @param faculty
-	 */
-	public void setFaculty(FacultyDetails faculty) {
-		// TODO - implement BatchHandlingFaculties.setFaculty
-		throw new UnsupportedOperationException();
-	}
+    public void setFacultyId(String facultyId) {
+        this.facultyId = facultyId;
+    }
 
-	public ModuleDetails getModule() {
-		// TODO - implement BatchHandlingFaculties.getModule
-		throw new UnsupportedOperationException();
-	}
+    public String getModuleId() {
+        return moduleId;
+    }
 
-	/**
-	 * 
-	 * @param module
-	 */
-	public void setModule(ModuleDetails module) {
-		// TODO - implement BatchHandlingFaculties.setModule
-		throw new UnsupportedOperationException();
-	}
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
+    }
+
+    public int getModuleType() {
+        return moduleType;
+    }
+
+    public void setModuleType(int moduleType) {
+        this.moduleType = moduleType;
+    }
+
+        
 
 	public String[] getAll() {
 		// TODO - implement BatchHandlingFaculties.getAll
