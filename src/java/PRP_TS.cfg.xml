@@ -6,7 +6,7 @@
  <hibernate-mapping>  
  <class name="org.synergy.prp_ts.beans.StreamDetails" table="StreamDetails">  
     <id name="streamId">  
-    <generator class="increment"></generator>  
+        <generator class="increment"></generator>  
     </id>  
     <property name="streamName"></property>  
  </class>  
@@ -54,5 +54,15 @@
        </id>
        <property name="name"></property>
    </class>
-   
+ </class> 
+  
+ <class name="org.synergy.prp_ts.beans.BatchHandlingFaculties" table="BatchHandlingFaculties">  
+    <id name="type">  
+        <generator class="increment"></generator>  
+    </id>  
+    <property name="batchId"></property>  
+    <property name="facultyId"></property> 
+    <property name="moduleId"></property> 
+    <property name="moduleType"></property> 
+ </class>
  </hibernate-mapping> 
