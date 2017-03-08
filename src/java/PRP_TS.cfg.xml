@@ -5,6 +5,17 @@
   
  <hibernate-mapping>  
  
+  <class name="org.synergy.prp_ts.beans.LoginDetails" table="LoginDetails" lazy="false">
+       <id name="userName">
+           <generator class="assigned"></generator>
+       </id>  
+      <property name="password"></property>   
+      <property name="type"></property>
+      <property name="activeStatus"></property>
+      <property name="loginTime"></property>
+      <property name="logoutTime"></property>
+  </class>
+     
   <class name="org.synergy.prp_ts.beans.AssessmentDetails" table="AssessmentDetails">  
     <id name="assessmentId">  
         <generator class="increment"></generator>  
