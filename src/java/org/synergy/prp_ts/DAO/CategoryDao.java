@@ -21,7 +21,7 @@ public class CategoryDao {
     private static Session session;
     private static Transaction transaction;
     
-    public static void updateVenue(List<CategoryDetails> categoryList){
+    public static void updateCategory(List<CategoryDetails> categoryList){
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
         try{
