@@ -6,8 +6,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.synergy.prp_ts.DAO.CategoryDao;
 import org.synergy.prp_ts.DAO.LoginDao;
 import org.synergy.prp_ts.DAO.VenueDao;
+import org.synergy.prp_ts.beans.CategoryDetails;
 import org.synergy.prp_ts.beans.LoginDetails;
 import org.synergy.prp_ts.beans.StreamDetails;
 import org.synergy.prp_ts.beans.VenueDetails;
@@ -16,23 +18,17 @@ import org.synergy.prp_ts.util.HibernateUtil;
 public class Main {
     public static void main(String[] args) {
            
-        List<VenueDetails> vd=new ArrayList<>();
+        List<CategoryDetails> cd=new ArrayList<>();
         
-        VenueDetails obj1 = new VenueDetails();
-        obj1.setVenueId("R101");
-        obj1.setVenueName("Founders Hall");
+        CategoryDetails obj1 = new CategoryDetails();
+        obj1.setCategoryId(0);
+        obj1.setCategoryName("IT");
         
-        VenueDetails obj2 = new VenueDetails();
-        obj2.setVenueId("R102");
-        obj2.setVenueName("Seminar Hall");
-        
-        VenueDetails obj3 = new VenueDetails();
-        obj3.setVenueId("R103");
-        obj3.setVenueName("Conference Hall");
-        
-        
-        
-        VenueDao.updateVenue(vd);
+       CategoryDetails obj2 = new CategoryDetails();
+        obj2.setCategoryId(1);
+        obj2.setCategoryName("Non-IT");
+       
+      CategoryDao.updateCategory(cd);
         HibernateUtil.closeSessionFactory();
     }
 }

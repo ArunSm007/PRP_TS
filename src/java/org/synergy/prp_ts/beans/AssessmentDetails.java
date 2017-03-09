@@ -26,10 +26,7 @@ public class AssessmentDetails {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param details
-	 */
+
 	public void setAll(String[] details) {
 		// TODO - implement AssessmentDetails.setAll
 		throw new UnsupportedOperationException();
