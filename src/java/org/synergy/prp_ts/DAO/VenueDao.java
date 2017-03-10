@@ -12,6 +12,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.synergy.prp_ts.beans.VenueDetails;
+import org.synergy.prp_ts.beans.VenueDetails;
 import org.synergy.prp_ts.util.HibernateUtil;
 
 /**
@@ -23,40 +24,40 @@ public class VenueDao {
     private static Session session;
     private static Transaction transaction;
     
-    public static void updateVenue(List<VenueDetails> venueList){
+    public static VenueDetails getVenueDetails(String venueId){
+        
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
+        
         try{
             
-            Query result = session.createQuery("from VenueDetails");
+            Query query = session.createQuery("from VenueDetails where venueId = :n");
+            query.setParameter("n", venueId);
             
-            List<VenueDetails> venueDetailses = result.list();
-            VenueDetails venueDetails,venueDetails1;
-            
-            int i=0,j=0;
-            for(;i<venueList.size();i++,j++){
+            if(query.list().size() > 0){
                 
-                venueDetails1 = venueList.get(i);
+                return (VenueDetails) query.list().get(0);
                 
-                if(j<venueDetailses.size()){
-                    
-                    venueDetails = venueDetailses.get(j);
-                    venueDetails.setVenueId(venueDetails1.getVenueId());
-                    venueDetails.setVenueName(venueDetails1.getVenueName());
-                    
-                    session.update(venueDetails);
-                    
-                }
-                else{
-                    session.save(venueDetails1);
-                }
             }
             
-            if(j<venueDetailses.size()){
-                for(;j < venueDetailses.size();j++)
-                    session.delete((VenueDetails)venueDetailses.get(j));
-            }
-
+        }
+        finally{
+            
+            session.close();
+            return null;
+            
+        }
+        
+    }
+    
+    public static void addVenue(VenueDetails venueDetails){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        
+        try{
+                              
+            session.save(venueDetails);
             transaction.commit();
             
         }
@@ -65,4 +66,39 @@ public class VenueDao {
         }
         
     }
+    
+    public static void updateVenue(VenueDetails venueDetails){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        
+        try{
+                        
+            session.update(venueDetails);
+            transaction.commit();
+            
+        }
+        finally{
+            session.close();
+        }
+        
+    }
+    
+    public static void deleteVenue(VenueDetails venueDetails){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        
+        try{
+                        
+            session.delete(venueDetails);
+            transaction.commit();
+            
+        }
+        finally{
+            session.close();
+        }
+        
+    }
+    
 }

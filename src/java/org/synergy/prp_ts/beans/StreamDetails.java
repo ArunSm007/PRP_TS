@@ -1,15 +1,27 @@
 package org.synergy.prp_ts.beans;
 
+import java.util.List;
+
 public class StreamDetails {
 
-    private int streamId;
+    private String streamId;
     private String streamName;
+    
+    private List<ModuleDetails> moduleDetailses;
 
-    public int getStreamId() {
+    public List<ModuleDetails> getModuleDetailses() {
+        return moduleDetailses;
+    }
+
+    public void setModuleDetailses(List<ModuleDetails> moduleDetailses) {
+        this.moduleDetailses = moduleDetailses;
+    }
+
+    public String getStreamId() {
         return streamId;
     }
 
-    public void setStreamId(int streamId) {
+    public void setStreamId(String streamId) {
         this.streamId = streamId;
     }
 

@@ -10,7 +10,6 @@ public class ModuleDetails {
 	private float logicalBuildingDuration;
 	private float moduleDuration;
 	private String categoryId;
-	private String streamId;
 	private List<SubModuleDetails> subModules;
 
     public int getModuleId() {
@@ -59,14 +58,6 @@ public class ModuleDetails {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public String getStreamId() {
-        return streamId;
-    }
-
-    public void setStreamId(String streamId) {
-        this.streamId = streamId;
     }
 
     public List<SubModuleDetails> getSubModules() {

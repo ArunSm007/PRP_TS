@@ -18,8 +18,10 @@ import org.synergy.prp_ts.util.HibernateUtil;
  * @author Admin
  */
 public class LoginDao {
+    
     private static Session session;
     private static Transaction transaction;
+    
     public static int validateUser(String username,String password){
         
         session = HibernateUtil.getSessionFactory().openSession();

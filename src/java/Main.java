@@ -8,27 +8,51 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.synergy.prp_ts.DAO.CategoryDao;
 import org.synergy.prp_ts.DAO.LoginDao;
+import org.synergy.prp_ts.DAO.StreamDao;
 import org.synergy.prp_ts.DAO.VenueDao;
+import org.synergy.prp_ts.beans.AssessmentDetails;
 import org.synergy.prp_ts.beans.CategoryDetails;
 import org.synergy.prp_ts.beans.LoginDetails;
+import org.synergy.prp_ts.beans.ModuleDetails;
 import org.synergy.prp_ts.beans.StreamDetails;
+import org.synergy.prp_ts.beans.SubModuleDetails;
 import org.synergy.prp_ts.beans.VenueDetails;
 import org.synergy.prp_ts.util.HibernateUtil;
 
 public class Main {
     public static void main(String[] args) {
            
-        List<CategoryDetails> cd=new ArrayList<>();
+        StreamDetails sd = new StreamDetails();
         
-        CategoryDetails obj1 = new CategoryDetails();
-        obj1.setCategoryId(0);
-        obj1.setCategoryName("IT");
+        sd.setStreamId("S_004");
+        sd.setStreamName("JavaHib");
         
-       CategoryDetails obj2 = new CategoryDetails();
-        obj2.setCategoryId(1);
-        obj2.setCategoryName("Non-IT");
-       
-      CategoryDao.updateCategory(cd);
+        
+        List<ModuleDetails> mds = new ArrayList<>();
+        ModuleDetails md = new ModuleDetails();
+        
+        
+        md.setCategoryId("C_001");
+        md.setLogicalBuildingDuration(1.123f);
+        md.setModuleDuration(1.123f);
+        md.setModuleName("JAVA_OOPS");
+        
+        mds.add(md);
+        sd.setModuleDetailses(mds);
+        
+        List<SubModuleDetails> mds1 = new ArrayList<>();
+        SubModuleDetails md1 = new SubModuleDetails();
+        
+        md1.setSubModuleName("CLASSES");
+        md1.setMiniprojectDuration(0);
+        md1.setPracticeDuration(0);
+        
+        mds1.add(md1);
+        md.setSubModules(mds1);
+        
+        List<AssessmentDetails> assessmentDetailses = new ArrayList<>();
+        StreamDao.updateStream(sd);
+        
         HibernateUtil.closeSessionFactory();
     }
 }

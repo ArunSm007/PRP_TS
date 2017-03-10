@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TrainingDetails {
 
-	private int trainingId;
+	private String trainingId;
 	private String categoryId;
 	private String streamId;
         private String venueId;
@@ -38,11 +38,11 @@ public class TrainingDetails {
             this.batchDetailses = batchDetailses;
         }
         
-        public int getTrainingId() {
+        public String getTrainingId() {
             return trainingId;
         }
 
-        public void setTrainingId(int trainingId) {
+        public void setTrainingId(String trainingId) {
             this.trainingId = trainingId;
         }
 

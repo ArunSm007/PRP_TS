@@ -31,7 +31,7 @@
       <property name="miniprojectDuration"></property>
       <property name="practiceDuration"></property>
       <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
-            <key column="moduleId" />
+            <key column="subModuleId" />
             <index column="type"/>
             <one-to-many class="org.synergy.prp_ts.beans.AssessmentDetails"/>
       </list>
@@ -45,7 +45,6 @@
        <property name="logicalBuildingDuration"></property>
        <property name="moduleDuration"></property>
        <property name="categoryId"></property>
-       <property name="streamId"></property>
        <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="moduleId" />
             <index column="type"/>
@@ -60,7 +59,7 @@
    
    <class name="org.synergy.prp_ts.beans.TrainingDetails" table="TrainingDetails">
       <id name="trainingId">
-          <generator class="increment"></generator>
+          <generator class="assigned"></generator>
       </id>
       <property name="categoryId"></property>
       <property name="streamId"></property>
@@ -116,7 +115,12 @@
     <id name="streamId">  
         <generator class="assigned"></generator>  
     </id>  
-    <property name="streamName"></property>  
+    <property name="streamName"></property>
+    <list name="moduleDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+        <key column="streamId" />
+        <index column="type"/>
+        <one-to-many class="org.synergy.prp_ts.beans.ModuleDetails"/>
+    </list>   
   </class>
   
   <class name="org.synergy.prp_ts.beans.CategoryDetails" table="CategoryDetails">  
