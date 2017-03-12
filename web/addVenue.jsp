@@ -30,7 +30,7 @@
             <div class="container-fluid">
                 <!-- Div for Brand Name -->
                 <div class="navbar-header">
-                    <a href="/PRP_TS/" class="navbar-brand">
+                    <a href="/PRP_TS/" class="navbar-brand hidden-sm">
                         <span class="glyphicon glyphicon-home"></span>
                         &nbsp;Training Scheduler
                     </a>
@@ -44,7 +44,7 @@
                 <div class="collapse navbar-collapse" id="nav1">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-user"></span>
                                 &nbsp;
                                 Profile
@@ -75,7 +75,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span>
                                     <img src="lecturer.png" alt="trainer" style="height: 20px;">
                                 </span>
@@ -108,7 +108,7 @@
                     </ul>   
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span>
                                     <img src="training.png" alt="Training" style="height: 20px;">
                                 </span>
@@ -141,7 +141,7 @@
                     </ul>   
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span class="glyphicon glyphicon-education"></span>
                                 &nbsp;
                                 Stream
@@ -172,7 +172,7 @@
                     </ul>   
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span>
                                     <img src="category.png" alt="category" style="height: 20px;">
                                 </span>
@@ -205,7 +205,7 @@
                     </ul>   
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a title="" class="dropdown-toggle" data-toggle="dropdown">
+                            <a title="" class="dropdown-toggle btn" data-toggle="dropdown">
                                 <span>
                                     <img src="venue.png" alt="venue" style="height: 20px;">
                                 </span>
@@ -215,8 +215,8 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li>
-                                    <a href="" title="">
+                                <li class="active">
+                                    <a href="addVenue.jsp" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Venue
                                     </a>
@@ -243,12 +243,18 @@
         <!-- Main Content -->
         <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;" id="main-content">
             <div class="row" style="height: 100%;">
-                <div class="col-sm-3 col-md-2 hidden-xs bg-success well" style="height: 100%;margin-left: 10px;">
-                    
-                </div>
-                <div class="col-sm-9 col-md-10 col-md-offset-2">
-                    
-                </div>
+                <form action="MainServlet" method="post" class="col-xs-6 col-xs-offset-3 form-horizontal text-center">
+                    <div class="form-group">
+                        <label for="venueName" class="control-label col-xs-3">Venue Name</label>
+                        <div class="col-xs-9">
+                            <input type="text" id="venueName" name="venueName" class="form-control">
+                        </div> 
+                    </div>
+                    <input type="hidden" name="action" value="addVenue">
+                    <input type="submit" class="btn btn-default btn-primary" value="Add">
+                </form>
+                ${venueName}
+                ${venueStatus}
             </div>
         </div>
         
@@ -257,8 +263,18 @@
         <nav class="navbar navbar-default navbar-inverse navbar-fixed-bottom">
             <div class="container-fluid">
                 <div class="navbar-header navbar-right">
-                    <a href="http://www.ksrce.ac.in" class="navbar-brand">
-                        Powered By
+                    <span class="navbar-text">Powered By</span>
+                    <a href="http://www.wipro.com/india/" class="navbar-brand" style="padding: 0;">
+                        
+                        <span>
+                            <img src="wipro.png" alt="category" style="height: 50px;">
+                        </span>
+                    </a>
+                    <a href="http://www.ksrce.ac.in" class="navbar-brand" style="padding: 0;margin-left: 5px;padding-top: 5px;">
+            
+                        <span>
+                            <img src="ksrce.png" alt="category" style="height: 40px;">
+                        </span>
                     </a>
                 </div>
                 <ul class="nav navbar-nav">

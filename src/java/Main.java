@@ -17,11 +17,14 @@ import org.synergy.prp_ts.beans.ModuleDetails;
 import org.synergy.prp_ts.beans.StreamDetails;
 import org.synergy.prp_ts.beans.SubModuleDetails;
 import org.synergy.prp_ts.beans.VenueDetails;
+import org.synergy.prp_ts.generators.VenueIdGenerator;
 import org.synergy.prp_ts.util.HibernateUtil;
 
 public class Main {
     public static void main(String[] args) {
-                     
-        HibernateUtil.closeSessionFactory();
+        System.out.println(VenueDao.getVenueDetailsByName("Seminar Hall"));
+        System.out.println(VenueDao.getVenueDetailsById("VID_001"));
+        VenueIdGenerator vig = new VenueIdGenerator();
+        
     }
 }

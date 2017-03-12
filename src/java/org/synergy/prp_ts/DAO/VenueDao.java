@@ -24,15 +24,42 @@ public class VenueDao {
     private static Session session;
     private static Transaction transaction;
     
-    public static VenueDetails getVenueDetails(String venueId){
+    public static VenueDetails getVenueDetailsById(String venueId){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        
+        try{
+            
+            Query query = session.createQuery("from VenueDetails where venueId = :n");
+            query.setParameter("n", venueId);
+            
+            List<VenueDetails> detailses = query.list();
+                    
+            if(query.list().size() > 0){
+                return (VenueDetails) query.list().get(0);
+                
+            }
+            
+            return null;
+            
+        }
+        finally{
+            
+            session.close();
+            
+        }
+        
+    }
+    
+    public static VenueDetails getVenueDetailsByName(String venueName){
         
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
         
         try{
             
-            Query query = session.createQuery("from VenueDetails where venueId = :n");
-            query.setParameter("n", venueId);
+            Query query = session.createQuery("from VenueDetails where venueName = :n");
+            query.setParameter("n", venueName);
             
             if(query.list().size() > 0){
                 
@@ -40,11 +67,11 @@ public class VenueDao {
                 
             }
             
+            return null;
         }
         finally{
             
             session.close();
-            return null;
             
         }
         
