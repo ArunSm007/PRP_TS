@@ -2,7 +2,6 @@
 package org.synergy.prp_ts.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +36,9 @@ public class MainServlet extends HttpServlet {
         }
         else if(pageIdentifier.equals("updateVenue")){
             updateVenue(request, response);
+        }
+           else if(pageIdentifier.equals("updateCategory")){
+            updateCategory(request, response);
         }
     }
     
@@ -102,21 +104,40 @@ public class MainServlet extends HttpServlet {
         
     }
     
-    protected void addTrainer(HttpServletRequest request, HttpServletResponse response)
+      protected void updateCategory(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int result = TrainerAdmin.addTrainer(request.getParameter("trainerId"),request.getParameter("trainerName"));
+        int result = CategoryAdmin.updateCategory(request.getParameter("currentCategoryName"),request.getParameter("newCategoryName"));
         
         if(result == 1){
             HttpSession session = request.getSession(false);
-            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "true");
+            request.getRequestDispatcher("updateCategory.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "false");
+            response.sendRedirect("updateCategory.jsp");
+        }
+        
+    }
+    protected void addTrainer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = TrainerAdmin.addTrainer(request.getParameter("wcfId"),request.getParameter("trainerName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerName", request.getParameter("trainerName"));
             session.setAttribute("trainerStatus", "true");
             request.getRequestDispatcher("addTrainer.jsp").forward(request, response);
         }
         else{
             HttpSession session = request.getSession(false);
-            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerName", request.getParameter("trainerName"));
             session.setAttribute("trainerStatus", "false");
             response.sendRedirect("addTrainer.jsp");
@@ -124,4 +145,23 @@ public class MainServlet extends HttpServlet {
         
     }
 
+     protected void updateTrainer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = CategoryAdmin.updateCategory(request.getParameter("wcfId"),request.getParameter("trainerName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerName", request.getParameter("trainerName"));
+            session.setAttribute("trainerStatus", "true");
+            request.getRequestDispatcher("updateTrainer.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerName", request.getParameter("trainerName"));
+            session.setAttribute("trainerStatus", "false");
+            response.sendRedirect("updateTrainer.jsp");
+        }
+        
+    }
 }

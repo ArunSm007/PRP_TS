@@ -29,4 +29,17 @@ public class TrainerAdmin {
         return -1;
         
     }
+    
+      public static int updateTrainer(String wcfId,String trainerName){
+        TrainerDetails trainerDetails = TrainerDao.getTrainerDetails(wcfId);
+        if(trainerDetails != null){
+          
+           trainerDetails.setName(trainerName);
+           TrainerDao.updateTrainer(trainerDetails);
+        
+            return 1;
+        }
+        
+        return -1;
+    }
 }

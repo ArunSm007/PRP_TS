@@ -6,7 +6,9 @@
 package org.synergy.prp_ts.administrators;
 
 import org.synergy.prp_ts.DAO.CategoryDao;
+import org.synergy.prp_ts.DAO.VenueDao;
 import org.synergy.prp_ts.beans.CategoryDetails;
+import org.synergy.prp_ts.beans.VenueDetails;
 
 /**
  *
@@ -26,5 +28,18 @@ public class CategoryAdmin {
         
         return -1;
         
+    }
+    
+     public static int updateCategory(String currentCategoryName,String newCategoryName){
+        VenueDetails venueDetails = VenueDao.getVenueDetailsByName(currentCategoryName);
+        if(venueDetails != null){
+          
+            venueDetails.setVenueName(newCategoryName);
+            VenueDao.updateVenue(venueDetails);
+        
+            return 1;
+        }
+        
+        return -1;
     }
 }
