@@ -48,6 +48,6 @@ Contributor(s):
     <property name="hibernate.connection.username">system</property>
     <property name="hibernate.connection.password">system</property>
     <property name="hbm2ddl.auto">update</property>
-    <mapping class="" file="" jar="" package="" resource="PRP_TS.cfg.xml"/>
+    <mapping class="" file="" jar="" package="" resource="PRP_TS.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
