@@ -36,7 +36,7 @@ public class MainServlet extends HttpServlet {
             addTrainer(request, response);
         }
         else if(pageIdentifier.equals("updateVenue")){
-            addCategory(request, response);
+            updateVenue(request, response);
         }
     }
     
@@ -63,17 +63,19 @@ public class MainServlet extends HttpServlet {
      protected void updateVenue(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int result = VenueAdmin.updateVenue(request.getParameter("venueName"));
+        int result = VenueAdmin.updateVenue(request.getParameter("currentVenueName"),request.getParameter("newVenueName"));
         
         if(result == 1){
             HttpSession session = request.getSession(false);
-            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("currentVenueName", request.getParameter("currentVenueName"));
+            session.setAttribute("newVenueName", request.getParameter("newVenueName"));
             session.setAttribute("venueStatus", "true");
             request.getRequestDispatcher("updateVenue.jsp").forward(request, response);
         }
         else{
             HttpSession session = request.getSession(false);
-            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("currentVenueName", request.getParameter("currentVenueName"));
+            session.setAttribute("newVenueName", request.getParameter("newVenueName"));
             session.setAttribute("venueStatus", "false");
             response.sendRedirect("updateVenue.jsp");
         }

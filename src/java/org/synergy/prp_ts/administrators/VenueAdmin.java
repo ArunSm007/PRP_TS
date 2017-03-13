@@ -27,11 +27,11 @@ public class VenueAdmin {
         
         return -1;
     }
-    public static int updateVenue(String venueName){
-        VenueDetails venueDetails = VenueDao.getVenueDetailsByName(venueName);
+    public static int updateVenue(String currentVenueName,String newVenueName){
+        VenueDetails venueDetails = VenueDao.getVenueDetailsByName(currentVenueName);
         if(venueDetails != null){
           
-            venueDetails.setVenueName(venueName);
+            venueDetails.setVenueName(newVenueName);
             VenueDao.updateVenue(venueDetails);
         
             return 1;

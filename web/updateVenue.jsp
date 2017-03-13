@@ -245,15 +245,22 @@
             <div class="row" style="height: 100%;">
                 <form action="MainServlet" method="post" class="col-xs-6 col-xs-offset-3 form-horizontal text-center">
                     <div class="form-group">
-                        <label for="venueName" class="control-label col-xs-3">Venue Name</label>
+                        <label for="currentVenueName" class="control-label col-xs-3">Current Venue Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="venueName" name="venueName" class="form-control">
+                            <input type="text" id="currentVenueName" name="currentVenueName" class="form-control">
                         </div> 
                     </div>
-                    <input type="hidden" name="action" value="addVenue">
+                    <div class="form-group">
+                        <label for="newVenueName" class="control-label col-xs-3">New Venue Name</label>
+                        <div class="col-xs-9">
+                            <input type="text" id="newVenueName" name="newVenueName" class="form-control">
+                        </div> 
+                    </div>
+                    <input type="hidden" name="action" value="updateVenue">
                     <input type="submit" class="btn btn-default btn-primary" value="Add">
                 </form>
-                ${venueName}
+                ${currentVenueName}
+                ${newVenueName}
                 ${venueStatus}
             </div>
         </div>
