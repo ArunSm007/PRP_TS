@@ -35,6 +35,9 @@ public class MainServlet extends HttpServlet {
         else if(pageIdentifier.equals("addTrainer")){
             addTrainer(request, response);
         }
+        else if(pageIdentifier.equals("updateVenue")){
+            addCategory(request, response);
+        }
     }
     
     protected void addVenue(HttpServletRequest request, HttpServletResponse response)
@@ -53,6 +56,26 @@ public class MainServlet extends HttpServlet {
             session.setAttribute("venueName", request.getParameter("venueName"));
             session.setAttribute("venueStatus", "false");
             response.sendRedirect("addVenue.jsp");
+        }
+        
+    }
+    
+     protected void updateVenue(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = VenueAdmin.updateVenue(request.getParameter("venueName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("venueStatus", "true");
+            request.getRequestDispatcher("updateVenue.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("venueStatus", "false");
+            response.sendRedirect("updateVenue.jsp");
         }
         
     }
