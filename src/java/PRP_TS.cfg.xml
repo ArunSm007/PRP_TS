@@ -125,7 +125,7 @@
   
   <class name="org.synergy.prp_ts.beans.CategoryDetails" table="CategoryDetails">  
     <id name="categoryId">  
-        <generator class="assigned"></generator>  
+        <generator class="org.synergy.prp_ts.generators.CategoryIdGenerator"></generator>  
     </id>  
     <property name="categoryName"></property> 
   </class>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.synergy.prp_ts.administrators.CategoryAdmin;
 import org.synergy.prp_ts.administrators.VenueAdmin;
 
 public class MainServlet extends HttpServlet {
@@ -27,6 +28,9 @@ public class MainServlet extends HttpServlet {
         if(pageIdentifier.equals("addVenue")){
             addVenue(request, response);
         }
+        else if(pageIdentifier.equals("addCategory")){
+            addCategory(request, response);
+        }
     }
     
     protected void addVenue(HttpServletRequest request, HttpServletResponse response)
@@ -45,6 +49,26 @@ public class MainServlet extends HttpServlet {
             session.setAttribute("venueName", request.getParameter("venueName"));
             session.setAttribute("venueStatus", "false");
             response.sendRedirect("addVenue.jsp");
+        }
+        
+    }
+    
+    protected void addCategory(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = CategoryAdmin.addCategory(request.getParameter("categoryName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "true");
+            request.getRequestDispatcher("addCategory.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "false");
+            response.sendRedirect("addCategory.jsp");
         }
         
     }

@@ -12,7 +12,7 @@ public class CategoryDao {
     private static Session session;
     private static Transaction transaction;
     
-    public static CategoryDetails getCategoryDetails(String categoryId){
+    public static CategoryDetails getCategoryDetailsById(String categoryId){
         
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
@@ -27,12 +27,36 @@ public class CategoryDao {
                 return (CategoryDetails) query.list().get(0);
                 
             }
-            
+            return null;
         }
         finally{
             
             session.close();
+            
+        }
+        
+    }
+    
+    public static CategoryDetails getCategoryDetailsByName(String categoryName){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        
+        try{
+            
+            Query query = session.createQuery("from CategoryDetails where categoryName = :n");
+            query.setParameter("n", categoryName);
+            
+            if(query.list().size() > 0){
+                
+                return (CategoryDetails) query.list().get(0);
+                
+            }
             return null;
+        }
+        finally{
+            
+            session.close();
             
         }
         
