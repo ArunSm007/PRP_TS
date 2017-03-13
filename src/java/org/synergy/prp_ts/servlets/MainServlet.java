@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.synergy.prp_ts.administrators.CategoryAdmin;
+import org.synergy.prp_ts.administrators.TrainerAdmin;
 import org.synergy.prp_ts.administrators.VenueAdmin;
 
 public class MainServlet extends HttpServlet {
@@ -30,6 +31,9 @@ public class MainServlet extends HttpServlet {
         }
         else if(pageIdentifier.equals("addCategory")){
             addCategory(request, response);
+        }
+        else if(pageIdentifier.equals("addTrainer")){
+            addTrainer(request, response);
         }
     }
     
@@ -69,6 +73,28 @@ public class MainServlet extends HttpServlet {
             session.setAttribute("categoryName", request.getParameter("categoryName"));
             session.setAttribute("categoryStatus", "false");
             response.sendRedirect("addCategory.jsp");
+        }
+        
+    }
+    
+    protected void addTrainer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = TrainerAdmin.addTrainer(request.getParameter("trainerId"),request.getParameter("trainerName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("trainerName", request.getParameter("trainerName"));
+            session.setAttribute("trainerStatus", "true");
+            request.getRequestDispatcher("addTrainer.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("trainerName", request.getParameter("trainerName"));
+            session.setAttribute("trainerStatus", "false");
+            response.sendRedirect("addTrainer.jsp");
         }
         
     }

@@ -18,7 +18,7 @@ public class TrainerDao {
         
         try{
             
-            Query query = session.createQuery("from TrainerDetails where trainerId = :n");
+            Query query = session.createQuery("from TrainerDetails where wcfId = :n");
             query.setParameter("n", trainerId);
             
             if(query.list().size() > 0){
@@ -27,11 +27,12 @@ public class TrainerDao {
                 
             }
             
+            return null;
+            
         }
         finally{
             
             session.close();
-            return null;
             
         }
         
