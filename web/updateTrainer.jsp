@@ -245,19 +245,19 @@
             <div class="row" style="height: 100%;">
                 <form action="MainServlet" method="post" class="col-xs-6 col-xs-offset-3 form-horizontal text-center">
                     <div class="form-group">
-                        <label for="wcfId" class="control-label col-xs-3">wcfId</label>
+                        <label for="wcfId" class="control-label col-xs-3">WCF ID</label>
                         <div class="col-xs-9">
-                            <input type="text" id="wcfId" name="WcfId" class="form-control">
+                            <input type="text" id="wcfId" name="wcfId" class="form-control">
                         </div> 
                     </div>
                     <div class="form-group">
-                        <label for="trainerName" class="control-label col-xs-3"> Name trainer Name</label>
+                        <label for="trainerName" class="control-label col-xs-3">Trainer Name</label>
                         <div class="col-xs-9">
                             <input type="text" id="trainerName" name="trainerName" class="form-control">
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="updateTrainer">
-                    <input type="submit" class="btn btn-default btn-primary" value="Add">
+                    <input type="submit" class="btn btn-default btn-primary" value="Update">
                 </form>
                 ${wcfId}
                 ${trainerName}

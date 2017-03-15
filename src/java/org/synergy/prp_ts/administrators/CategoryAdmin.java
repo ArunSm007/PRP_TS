@@ -31,11 +31,11 @@ public class CategoryAdmin {
     }
     
      public static int updateCategory(String currentCategoryName,String newCategoryName){
-        VenueDetails venueDetails = VenueDao.getVenueDetailsByName(currentCategoryName);
-        if(venueDetails != null){
+        CategoryDetails categoryDetails = CategoryDao.getCategoryDetailsByName(currentCategoryName);
+        if(categoryDetails != null){
           
-            venueDetails.setVenueName(newCategoryName);
-            VenueDao.updateVenue(venueDetails);
+            categoryDetails.setCategoryName(newCategoryName);
+            CategoryDao.updateCategory(categoryDetails);
         
             return 1;
         }

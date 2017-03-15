@@ -25,21 +25,22 @@ public class MainServlet extends HttpServlet {
         
         String pageIdentifier = request.getParameter("action");
         
-        if(pageIdentifier.equals("addVenue")){
-            addVenue(request, response);
+        
+        switch(pageIdentifier){
+            case "addVenue"     :   addVenue(request, response);
+            break;
+            case "addCategory"  :   addCategory(request, response);
+            break;
+            case "addTrainer"   :   addTrainer(request, response);
+            break;
+            case "updateVenue"   :   updateVenue(request, response);
+            break;
+            case "updateCategory"   :   updateCategory(request, response);
+            break;
+            case "updateTrainer"   :   updateTrainer(request, response);
+            break;
         }
-        else if(pageIdentifier.equals("addCategory")){
-            addCategory(request, response);
-        }
-        else if(pageIdentifier.equals("addTrainer")){
-            addTrainer(request, response);
-        }
-        else if(pageIdentifier.equals("updateVenue")){
-            updateVenue(request, response);
-        }
-           else if(pageIdentifier.equals("updateCategory")){
-            updateCategory(request, response);
-        }
+        
     }
     
     protected void addVenue(HttpServletRequest request, HttpServletResponse response)
@@ -111,13 +112,15 @@ public class MainServlet extends HttpServlet {
         
         if(result == 1){
             HttpSession session = request.getSession(false);
-            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("currentCategoryName", request.getParameter("currentCategoryName"));
+            session.setAttribute("newCategoryName", request.getParameter("newCategoryName"));
             session.setAttribute("categoryStatus", "true");
             request.getRequestDispatcher("updateCategory.jsp").forward(request, response);
         }
         else{
             HttpSession session = request.getSession(false);
-            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("currentCategoryName", request.getParameter("currentCategoryName"));
+            session.setAttribute("newCategoryName", request.getParameter("newCategoryName"));
             session.setAttribute("categoryStatus", "false");
             response.sendRedirect("updateCategory.jsp");
         }
@@ -148,16 +151,18 @@ public class MainServlet extends HttpServlet {
      protected void updateTrainer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int result = CategoryAdmin.updateCategory(request.getParameter("wcfId"),request.getParameter("trainerName"));
+        int result = TrainerAdmin.updateTrainer(request.getParameter("wcfId"),request.getParameter("trainerName"));
         
         if(result == 1){
             HttpSession session = request.getSession(false);
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerName", request.getParameter("trainerName"));
             session.setAttribute("trainerStatus", "true");
             request.getRequestDispatcher("updateTrainer.jsp").forward(request, response);
         }
         else{
             HttpSession session = request.getSession(false);
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerName", request.getParameter("trainerName"));
             session.setAttribute("trainerStatus", "false");
             response.sendRedirect("updateTrainer.jsp");
