@@ -247,7 +247,7 @@
                     <div class="form-group">
                         <label for="trainerId" class="control-label col-xs-3">Trainer Id</label>
                         <div class="col-xs-9">
-                            <input type="text" id="trainerId" name="trainerId" class="form-control">
+                            <input type="text" id="wcfId" name="wcfId" class="form-control">
                         </div> 
                     </div>
                     <div class="form-group">
@@ -259,7 +259,7 @@
                     <input type="hidden" name="action" value="addTrainer">
                     <input type="submit" class="btn btn-default btn-primary" value="Add">
                 </form>
-                ${trainerId}
+                ${wcfId}
                 ${trainerName}
                 ${trainerStatus}
             </div>

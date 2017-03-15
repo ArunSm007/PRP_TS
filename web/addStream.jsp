@@ -242,8 +242,27 @@
         
         <!-- Main Content -->
         <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;" id="main-content">
-            <div class="row" style="height: 100%;">
-                
+            <div class="row col-xs-12 col-sm-8 col-sm-offset-2" style="height: 100%;">
+                <div class="row col-xs-12">
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="col-xs-8 col-sm-6">Module Name</p>
+                        <input type="text" name="" class="col-xs-4 col-sm-6">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="col-xs-8 col-sm-6">Module Duration</p>
+                        <input type="number" name="" class="col-xs-4 col-sm-6">
+                    </div>
+                </div>
+                <div class="row col-xs-12">
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="col-xs-8 col-sm-6">Module Name</p>
+                        <input type="text" name="" class="col-xs-4 col-sm-6">
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <p class="col-xs-8 col-sm-6">Module Duration</p>
+                        <input type="number" name="" class="col-xs-4 col-sm-6">
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -267,7 +286,7 @@
                     </a>
                 </div>
                 <ul class="nav navbar-nav">
-                    <li class="hidden-sm">
+                    <li>
                         <a href="aboutUs.html" title="" class="btn">About us</a>
                     </li>
                     <li>

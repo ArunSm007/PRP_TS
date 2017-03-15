@@ -128,7 +128,7 @@ public class MainServlet extends HttpServlet {
     }
     protected void addTrainer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        System.out.println(request.getParameter("wcfId"));
         int result = TrainerAdmin.addTrainer(request.getParameter("wcfId"),request.getParameter("trainerName"));
         
         if(result == 1){
