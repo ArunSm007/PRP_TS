@@ -30,4 +30,16 @@ public class VenueAdmin {
         
         return -1;
     }
+    
+     public static int deleteVenue(String venueName){
+        VenueDetails venueDetails = VenueDao.getVenueDetailsByName(venueName);
+        if(venueDetails != null){
+            
+            VenueDao.deleteVenue(venueDetails);
+            
+            return 1;
+        }
+        
+        return -1;
+    }
 }

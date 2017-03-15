@@ -42,4 +42,16 @@ public class TrainerAdmin {
         
         return -1;
     }
+      
+        public static int deleteTrainer(String trainerId){
+        TrainerDetails trainerDetails = TrainerDao.getTrainerDetails(trainerId);
+        if(trainerDetails != null){
+            
+            TrainerDao.deleteTrainer(trainerDetails);
+            
+            return 1;
+        }
+        
+        return -1;
+    }
 }
