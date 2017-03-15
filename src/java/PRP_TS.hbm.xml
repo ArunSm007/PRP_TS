@@ -44,7 +44,6 @@
        <property name="moduleName"></property>
        <property name="logicalBuildingDuration"></property>
        <property name="moduleDuration"></property>
-       <property name="categoryId"></property>
        <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="moduleId" />
             <index column="type"/>

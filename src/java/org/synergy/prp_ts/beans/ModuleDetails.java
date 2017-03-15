@@ -9,7 +9,6 @@ public class ModuleDetails {
 	private List<AssessmentDetails> assessments;
 	private float logicalBuildingDuration;
 	private float moduleDuration;
-	private String categoryId;
 	private List<SubModuleDetails> subModules;
 
     public int getModuleId() {
@@ -50,14 +49,6 @@ public class ModuleDetails {
 
     public void setModuleDuration(float moduleDuration) {
         this.moduleDuration = moduleDuration;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
     }
 
     public List<SubModuleDetails> getSubModules() {
