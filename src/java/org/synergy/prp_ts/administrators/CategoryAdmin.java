@@ -42,4 +42,17 @@ public class CategoryAdmin {
         
         return -1;
     }
+     
+     public static int deleteCategory(String categoryName){
+        CategoryDetails categoryDetails = CategoryDao.getCategoryDetailsByName(categoryName);
+        if(categoryDetails != null){
+            
+            CategoryDao.deleteCategory(categoryDetails);
+            
+            return 1;
+        }
+        
+        return -1;
+    }
 }
+

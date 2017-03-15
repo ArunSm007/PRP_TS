@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/PRP_TS/src/java/org/synergy/prp_ts/servlets/MainServlet.java</file>
+            <file>file:/F:/PRP_TS/web/addVenue.jsp</file>
+            <file>file:/F:/PRP_TS/src/java/org/synergy/prp_ts/administrators/TrainerAdmin.java</file>
+            <file>file:/F:/PRP_TS/src/java/org/synergy/prp_ts/administrators/VenueAdmin.java</file>
+            <file>file:/F:/PRP_TS/src/java/org/synergy/prp_ts/administrators/CategoryAdmin.java</file>
+            <file>file:/F:/PRP_TS/web/deleteVenue.jsp</file>
+        </group>
     </open-files>
 </project-private>

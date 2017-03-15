@@ -39,6 +39,10 @@ public class MainServlet extends HttpServlet {
             break;
             case "updateTrainer"   :   updateTrainer(request, response);
             break;
+            case "deleteVenue"   :  deleteVenue(request, response);
+            break;
+            case "deleteCategory"   :  deleteCategory(request, response);
+            break;
         }
         
     }
@@ -85,6 +89,25 @@ public class MainServlet extends HttpServlet {
         
     }
     
+     protected void deleteVenue(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = VenueAdmin.deleteVenue(request.getParameter("venueName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("venueStatus", "true");
+            request.getRequestDispatcher("deleteVenue.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("venueName", request.getParameter("venueName"));
+            session.setAttribute("venueStatus", "false");
+            response.sendRedirect("deleteVenue.jsp");
+        }
+        
+    }
     protected void addCategory(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -123,6 +146,26 @@ public class MainServlet extends HttpServlet {
             session.setAttribute("newCategoryName", request.getParameter("newCategoryName"));
             session.setAttribute("categoryStatus", "false");
             response.sendRedirect("updateCategory.jsp");
+        }
+        
+    }
+      
+       protected void deleteCategory(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = CategoryAdmin.deleteCategory(request.getParameter("categoryName"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "true");
+            request.getRequestDispatcher("deleteCategory.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("categoryName", request.getParameter("categoryName"));
+            session.setAttribute("categoryStatus", "false");
+            response.sendRedirect("deleteCategory.jsp");
         }
         
     }
@@ -169,4 +212,25 @@ public class MainServlet extends HttpServlet {
         }
         
     }
+     
+     protected void deleteTrainer(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        int result = TrainerAdmin.deleteTrainer(request.getParameter("trainerId"));
+        
+        if(result == 1){
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("trainerStatus", "true");
+            request.getRequestDispatcher("deleteTrainer.jsp").forward(request, response);
+        }
+        else{
+            HttpSession session = request.getSession(false);
+            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("trainerStatus", "false");
+            response.sendRedirect("deleteTrainer.jsp");
+        }
+        
+    }
+
 }
