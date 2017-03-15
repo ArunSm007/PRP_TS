@@ -216,11 +216,11 @@ public class MainServlet extends HttpServlet {
      protected void deleteTrainer(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        int result = TrainerAdmin.deleteTrainer(request.getParameter("trainerId"));
+        int result = TrainerAdmin.deleteTrainer(request.getParameter("wcfId"));
         
         if(result == 1){
             HttpSession session = request.getSession(false);
-            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerStatus", "true");
             request.getRequestDispatcher("deleteTrainer.jsp").forward(request, response);
         }
