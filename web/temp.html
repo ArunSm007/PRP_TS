@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+        	function addActivity(t){
+        		var x = document.getElementById(t);
+        		var inp = document.createElement("select");
+        		var opt = document.createElement("option");
+        		opt.innerHTML = "MiniProject";
+        		inp.appendChild(opt);
+        		opt = opt.cloneNode();
+        		opt.innerHTML = "Practice";
+        		inp.appendChild(opt);
+        		var inp1 = document.createElement("input");
+        		inp1.type = 'text';
+        		var td = document.createElement("td");
+        		td.appendChild(inp);
+        		var td1 = document.createElement("td");
+        		td1.appendChild(inp1);
+        		var tr = document.createElement("tr");  
+        		tr.appendChild(td);
+        		tr.appendChild(td1);
+        		x.appendChild(tr);            
+        	}
+
+        	function addSubModule(t){
+        		var div = document.createElement('div');
+        		div.innerHTML = document.getElementById(t).getElementsByClassName('sub')[0];
+        		document.getElementById(t).appendChild(document.getElementById(t).getElementsByClassName('sub')[0]);
+        		alert();
+        	}
+        </script>
+    </head>
+    <body>
+        <form action="" method="" accept-charset="utf-8">
+        	<div>
+        		<label for="">Stream Name</label>
+        		<input type="text" name="">
+        		<label for="">Category</label>
+        		<select name="">
+        			<option value="">Java</option>
+        		</select>
+        	</div>
+        	<div id="s1">
+	        	<div class="sub">
+	        			<label for="">Submodule Name</label>
+	        			<input type="text" name="">
+	        			<label for="">Submodule Duration</label>
+	        			<input type="text" name="">
+	        			<table id="table1">
+	        				<thead>
+	        					<tr>
+	        						<th>Activity Type</th>
+	        						<th>Duration</th>
+	        					</tr>
+	        				</thead>
+	        				<tbody>
+	        					<tr>
+	        					</tr>
+	        				</tbody>
+	        			</table>
+	        			<button type="button" onclick="addActivity('table1')">Add Activity</button>
+	        	</div>
+        	</div>
+    		<button type="button" onclick="addSubModule('s1')">Add Submodule</button>
+
+        	<div id="m1">
+        		<label for="">Module Name</label>
+        		<input type="text" name="">
+        		<label for="">Module Duration</label>
+        		<input type="text" name="">
+        		
+        		<div id="s2">
+        			
+        		</div>
+        	</div>
+        	
+        </form>
+    </body>
+</html>
