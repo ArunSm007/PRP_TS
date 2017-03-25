@@ -245,9 +245,9 @@
             <div class="row" style="height: 100%;">
                 <form action="MainServlet" method="post" class="col-xs-6 col-xs-offset-3 form-horizontal text-center">
                     <div class="form-group">
-                        <label for="trainerId" class="control-label col-xs-3">Category Name</label>
+                        <label for="trainerId" class="control-label col-xs-3">Trainer Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="trainerId" name="trainerId" class="form-control">
+                            <input type="text" id="wcfId" name="wcfId" class="form-control">
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="deleteTrainer">

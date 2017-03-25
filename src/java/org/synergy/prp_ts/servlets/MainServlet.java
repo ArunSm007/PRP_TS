@@ -43,6 +43,8 @@ public class MainServlet extends HttpServlet {
             break;
             case "deleteCategory"   :  deleteCategory(request, response);
             break;
+            case "deleteTrainer"   :  deleteTrainer(request, response);
+            break;
         }
         
     }
@@ -226,7 +228,7 @@ public class MainServlet extends HttpServlet {
         }
         else{
             HttpSession session = request.getSession(false);
-            session.setAttribute("trainerId", request.getParameter("trainerId"));
+            session.setAttribute("wcfId", request.getParameter("wcfId"));
             session.setAttribute("trainerStatus", "false");
             response.sendRedirect("deleteTrainer.jsp");
         }

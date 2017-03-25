@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 11 Mar, 2017, 9:00:25 PM
-    Author     : Arun
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +16,7 @@
             html,body,#main-content{
                 height: 100%;
             }
+            
         </style>
     </head>
     <body>
@@ -242,27 +237,22 @@
         
         <!-- Main Content -->
         <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;" id="main-content">
-            <div class="row col-xs-12 col-sm-8 col-sm-offset-2" style="height: 100%;">
-                <div class="row col-xs-12">
-                    <div class="col-xs-12 col-sm-6">
-                        <p class="col-xs-8 col-sm-6">Module Name</p>
-                        <input type="text" name="" class="col-xs-4 col-sm-6">
+            <div class="row col-xs-12 text-center" style="height: 100%;padding: 0;margin: 0;">
+                <form class="col-xs-12 form-horizaontal" style="height: 100%;">
+                    <div id="module">
+                        <div id="submodule">
+                            
+                            <input type="text">
+                        </div>
+                        <div id="modact">
+                            
+                        </div>
+                        <div>
+                            <button class="btn btn-primary">Add Sub Module</button>
+                            <button class="btn btn-primary">Add Activity</button>
+                        </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <p class="col-xs-8 col-sm-6">Module Duration</p>
-                        <input type="number" name="" class="col-xs-4 col-sm-6">
-                    </div>
-                </div>
-                <div class="row col-xs-12">
-                    <div class="col-xs-12 col-sm-6">
-                        <p class="col-xs-8 col-sm-6">Module Name</p>
-                        <input type="text" name="" class="col-xs-4 col-sm-6">
-                    </div>
-                    <div class="col-xs-12 col-sm-6">
-                        <p class="col-xs-8 col-sm-6">Module Duration</p>
-                        <input type="number" name="" class="col-xs-4 col-sm-6">
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
         

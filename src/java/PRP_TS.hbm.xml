@@ -133,7 +133,7 @@
       <id name="venueId">
           <generator class="org.synergy.prp_ts.generators.VenueIdGenerator"></generator>
       </id>
-      <property name="venueName"></property>
+      <property name="venueName" not-null="true" unique="true"></property>
   </class>
   
   <class name="org.synergy.prp_ts.beans.TrainerDetails" table="TrainerDetails">

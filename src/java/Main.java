@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Query;
@@ -22,9 +21,9 @@ import org.synergy.prp_ts.util.HibernateUtil;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(VenueDao.getVenueDetailsByName("Seminar Hall"));
-        System.out.println(VenueDao.getVenueDetailsById("VID_001"));
-        VenueIdGenerator vig = new VenueIdGenerator();
-        
+        VenueDetails details = new VenueDetails();
+        details.setVenueName("Arun");
+        VenueDao.addVenue(details);
+        HibernateUtil.closeSessionFactory();
     }
 }
