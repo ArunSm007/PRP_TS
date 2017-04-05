@@ -16,8 +16,15 @@
             html,body,#main-content{
                 height: 100%;
             }
-            
         </style>
+        <script type="text/javascript">
+            function addSubModule(x){
+                var module = document.getElementById(x);
+                var subModule = document.getElementById("submodule").cloneNode(true);
+                subModule.id = subModule.id + module.getElementsByTagName('div').length;
+                module.appendChild(subModule);
+            }
+        </script>
     </head>
     <body>
 
@@ -239,16 +246,47 @@
         <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;" id="main-content">
             <div class="row col-xs-12 text-center" style="height: 100%;padding: 0;margin: 0;">
                 <form class="col-xs-12 form-horizaontal" style="height: 100%;">
-                    <div id="module">
-                        <div id="submodule">
-                            
-                            <input type="text">
+                    <div class="row" style="border: 1px solid black;padding: 20px;">
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label class="control-label col-xs-3 col-sm-4 col-sm-offset-2">Module Name</label>
+                                <div class="col-xs-9 col-sm-4">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label class="control-label col-xs-3 col-sm-4 col-sm-offset-2">Duration</label>
+                                <div class="col-xs-9 col-sm-4">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
                         </div>
-                        <div id="modact">
-                            
+                        <div id="module" class="row">
+                            <div id="submodule" class="row" style="margin: 10px;border: 1px solid black;padding: 10px;" >
+                                <div class="col-xs-12">
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label col-xs-4">Submodule Name</label>
+                                        <div class="col-xs-8 col-sm-3">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label class="control-label col-xs-4">Duration</label>
+                                        <div class="col-xs-8 col-sm-3">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row col-xs-12 text-center">
+                                    <button type="button" class="btn btn-primary">Add Submodule Activity</button>
+                                </div>
+                            </div>
+                            <div id="modact" class="row">
+
+                            </div>
                         </div>
-                        <div>
-                            <button class="btn btn-primary">Add Sub Module</button>
+                        <div class="row">
+                            <button class="btn btn-primary" onclick="addSubModule('module'); return false;">Add Sub Module</button>
                             <button class="btn btn-primary">Add Activity</button>
                         </div>
                     </div>
