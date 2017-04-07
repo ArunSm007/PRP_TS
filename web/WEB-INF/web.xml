@@ -4,9 +4,17 @@
         <servlet-name>MainServlet</servlet-name>
         <servlet-class>org.synergy.prp_ts.servlets.MainServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>org.synergy.prp_ts.servlets.AjaxServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/MainServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/AjaxServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

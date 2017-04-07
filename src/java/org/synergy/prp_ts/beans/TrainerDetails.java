@@ -1,3 +1,7 @@
+/**
+ * 
+ * @author Mathankumar
+ */
 package org.synergy.prp_ts.beans;
 
 public class TrainerDetails {

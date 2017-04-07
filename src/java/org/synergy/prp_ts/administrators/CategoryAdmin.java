@@ -12,7 +12,7 @@ import org.synergy.prp_ts.beans.VenueDetails;
 
 /**
  *
- * @author Arun
+ * @author RajeshKumar
  */
 public class CategoryAdmin {
     public static int addCategory(String categoryName){

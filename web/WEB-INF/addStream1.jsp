@@ -38,7 +38,7 @@
                     else if(ch[i].getAttribute('name') === 'moduleActivity')
                         ch[i].innerHTML = '';
                 }
-                subMod.innerHTML = "<div class=\"row\" name = \"subModuleDetails\" style=\"border: 1px solid rgb(20, 184, 206);padding: 10px;margin-bottom: 10px;\"><div><div class=\"form-group col-xs-6\"><label for=\"subModuleName\" class=\"control-label col-xs-6\">Submodule Name</label><div class=\"col-xs-4\"><input type=\"text\" name=\"subModuleName\" class=\"form-control\"></div></div><div class=\"row\" name=\"subModuleActivity\"></div><div class=\"row\"><button type=\"button\" onclick=\"addActivity(this.parentElement.parentElement,'subModuleActivity')\" class=\"btn btn-primary\">Add Activity</button></div></div>";
+                subMod.innerHTML = "<div class=\"row\" name = \"subModuleDetails\" style=\"border: 1px solid rgb(20, 184, 206);padding: 10px;margin-bottom: 10px;\"><div><div class=\"form-group col-xs-6\"><label for=\"subModuleName\" class=\"control-label col-xs-6\">Submodule Name</label><div class=\"col-xs-4\"><input type=\"text\" name=\"subModuleName\" class=\"form-control\"></div></div><div class=\"form-group col-xs-6\"><label for=\"subModuleDuration\" class=\"control-label col-xs-6\">Submodule Duration</label><div class=\"col-xs-4\"><input type=\"text\" name=\"subModuleDuration\" class=\"form-control\"></div></div></div><div class=\"row\" name=\"subModuleActivity\"></div><div class=\"row\"><button type=\"button\" onclick=\"addActivity(this.parentElement.parentElement,'subModuleActivity')\" class=\"btn btn-primary\">Add Activity</button></div></div>";
                 document.getElementById('ModuleForm').appendChild(x);
             }
             function addSubModule(x){
@@ -71,7 +71,7 @@
                     }
                 }
                 if(x.getElementsByTagName('select').length == 0){
-                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th></tr></thead><tbody><tr><td><select name=\"subModAct\" class=\"form-control\"><option value=\"MP\">MiniProject</option><option value=\"PC\">Practice</option></select></td></tr></tbody></table></div>"
+                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th><th>Duration</th></tr></thead><tbody><tr><td><select name=\"subModAct\" class=\"form-control\"><option value=\"MP\">MiniProject</option><option value=\"PC\">Practice</option></select></td><td><input type=\"text\" name=\"subModActDuration\" class=\"form-control\"></td></tr></tbody></table></div>"
                     x.innerHTML = innerString;
                 }
                 else{
@@ -93,7 +93,7 @@
                     }
                 }
                 if(x.getElementsByTagName('select').length == 0){
-                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th></tr></thead><tbody><tr><td><input type=\"text\" name=\"modActDuration\" class=\"form-control\"></td></tr></tbody></table></div>";
+                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th><th>Duration</th></tr></thead><tbody><tr><td><select name=\"modAct\" class=\"form-control\"><option value=\"AS\">Assessment</option><option value=\"LB\">Logical Building</option></select></td><td><input type=\"text\" name=\"modActDuration\" class=\"form-control\"></td></tr></tbody></table></div>";
                     x.innerHTML = innerString;
                 }
                 else{
@@ -118,6 +118,8 @@
                             for(var k = 0;k < subDivs.length;k++){
                                 if(subDivs[k].getAttribute('name') === 'moduleName')
                                     jsonString.modules[i].name = subDivs[k].value;
+                                else if(subDivs[k].getAttribute('name') === 'moduleDuration')
+                                    jsonString.modules[i].duration = subDivs[k].value;
                             }
                         }
                         else if(allDiv[j].getAttribute('name') === 'subModule'){
@@ -131,11 +133,12 @@
                                     divlength = jsonString.modules[i].subModules.length;
                                     jsonString.modules[i].subModules[divlength] = {};
                                     jsonString.modules[i].subModules[divlength].name = rowInp[0].value;
+                                    jsonString.modules[i].subModules[divlength].duration = rowInp[1].value;
                                     jsonString.modules[i].subModules[divlength].activities = [];
-                                    for(var k = 1;k < rowInp.length;k++){
-                                        jsonString.modules[i].subModules[divlength].activities[k-1] = {};
-                                        jsonString.modules[i].subModules[divlength].activities[k-1].activityType = rowSelect[k-1].value;
-                                        jsonString.modules[i].subModules[divlength].activities[k-1].activityDuration = rowInp[k].value;
+                                    for(var k = 2;k < rowInp.length;k++){
+                                        jsonString.modules[i].subModules[divlength].activities[k-2] = {};
+                                        jsonString.modules[i].subModules[divlength].activities[k-2].activityType = rowSelect[k-2].value;
+                                        jsonString.modules[i].subModules[divlength].activities[k-2].activityDuration = rowInp[k].value;
                                     }
                                 }
                             }
@@ -157,7 +160,6 @@
                 inp.setAttribute('name','jsonString');
                 inp.setAttribute('value',JSON.stringify(jsonString));
                 document.getElementById('mainForm').appendChild(inp);
-                alert(JSON.stringify(jsonString));
             }
         </script>
     </head>
@@ -414,6 +416,12 @@
                                     <input type="text" name="moduleName" class="form-control" required>
                                 </div>
                             </div>
+                            <div class="form-group col-xs-6">
+                                <label for="moduleDuration" class="control-label col-xs-6">Module Duration</label>
+                                <div class="col-xs-4">
+                                    <input type="text" name="moduleDuration" class="form-control" required>
+                                </div>
+                            </div>
                         </div>
                         <div name="subModule" class="row col-xs-10 col-xs-offset-1" >
                             <div class="row" name = "subModuleDetails" style="border: 1px solid rgb(20, 184, 206);padding: 10px;margin-bottom: 10px;">
@@ -422,6 +430,12 @@
                                         <label for="subModuleName" class="control-label col-xs-6">Submodule Name</label>
                                         <div class="col-xs-4">
                                             <input type="text" name="subModuleName" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-6">
+                                        <label for="subModuleDuration" class="control-label col-xs-6">Submodule Duration</label>
+                                        <div class="col-xs-4">
+                                            <input type="text" name="subModuleDuration" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -449,7 +463,7 @@
                     </div>
                     <div class="row">
                         <input type="hidden" class="btn btn-success" value="addStream" name="action">
-                        <input type="submit" class="btn btn-success" onclick="jsonParse(); return false;">
+                        <input type="submit" class="btn btn-success" onclick="jsonParse();">
                     </div>
                 </form>
             </div>

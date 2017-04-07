@@ -5,7 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.synergy.prp_ts.beans.StreamDetails;
 import org.synergy.prp_ts.util.HibernateUtil;
-
+/**
+ *
+ * @author RajeshKumar
+ */
 public class StreamDao {
     
     private static Session session;

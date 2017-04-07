@@ -15,7 +15,7 @@ import org.synergy.prp_ts.util.HibernateUtil;
 
 /**
  *
- * @author Admin
+ * @author RajeshKumar
  */
 public class LoginDao {
     

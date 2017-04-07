@@ -14,7 +14,7 @@ import org.synergy.prp_ts.util.HibernateUtil;
 
 /**
  *
- * @author Admin
+ * @author Harishkumar
  */
 public class TrainingDao {
     

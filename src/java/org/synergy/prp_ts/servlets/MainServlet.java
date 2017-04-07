@@ -2,15 +2,30 @@
 package org.synergy.prp_ts.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.synergy.prp_ts.administrators.CategoryAdmin;
 import org.synergy.prp_ts.administrators.TrainerAdmin;
 import org.synergy.prp_ts.administrators.VenueAdmin;
-
+import org.synergy.prp_ts.beans.AssessmentDetails;
+import org.synergy.prp_ts.beans.ModuleDetails;
+import org.synergy.prp_ts.beans.StreamDetails;
+/**
+ *
+ * @author PraveenKumar
+ */
 public class MainServlet extends HttpServlet {
 
     @Override
@@ -45,10 +60,42 @@ public class MainServlet extends HttpServlet {
             break;
             case "deleteTrainer"   :  deleteTrainer(request, response);
             break;
+            case "addStream"   :  addStream(request, response);
+            break;
+        }
+    }
+    
+    protected void addStream(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            String streamName = request.getParameter("streamName");
+            String categoryId = request.getParameter("categoryName");
+            String jsonString = request.getParameter("jsonString");
+            JSONParser jSONParser = new JSONParser();
+            JSONArray jSONArray = (JSONArray) ((JSONObject)(jSONParser.parse(jsonString))).get("modules");
+            StreamDetails streamDetails = new StreamDetails();
+            streamDetails.setStreamName(streamName);
+            List<ModuleDetails> moduleDetailses = streamDetails.getModuleDetailses();
+            JSONObject tmpJSONObject;
+            JSONArray tmpJSONArray;
+            ModuleDetails moduleDetails;
+            List<AssessmentDetails> assessmentDetailses = new ArrayList<>();
+            for(int i = 0;i < jSONArray.size();i++){
+                tmpJSONObject = (JSONObject) jSONArray.get(i);
+                moduleDetails = new ModuleDetails();
+                moduleDetails.setModuleName((String)tmpJSONObject.get("name"));
+                moduleDetails.setModuleDuration(Integer.parseInt((String)tmpJSONObject.get("duration")));
+                JSONArray tmpAct = ((JSONArray)tmpJSONObject.get("activities"));
+                for(int j = 0;j < tmpAct.size();j++){
+                    AssessmentDetails assessmentDetails = new AssessmentDetails();
+//                    assessmentDetails.setAssessmentId();
+                }
+            }
+        } catch (ParseException ex) {
+            Logger.getLogger(MainServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }
-    
     protected void addVenue(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         

@@ -1,5 +1,8 @@
 package org.synergy.prp_ts.DAO;
-
+/**
+ *
+ * @author RajeshKumar
+ */
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,6 +14,25 @@ public class CategoryDao {
     
     private static Session session;
     private static Transaction transaction;
+    
+    public static List<CategoryDetails> getAllCategoryDetails(){
+        
+        session = HibernateUtil.getSessionFactory().openSession();
+        transaction = session.beginTransaction();
+        
+        try{
+            
+            Query query = session.createQuery("from CategoryDetails");
+            return (List<CategoryDetails>) query.list();
+            
+        }
+        finally{
+            
+            session.close();
+            
+        }
+        
+    }
     
     public static CategoryDetails getCategoryDetailsById(String categoryId){
         

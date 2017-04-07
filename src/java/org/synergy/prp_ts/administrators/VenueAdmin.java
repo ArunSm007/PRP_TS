@@ -2,7 +2,10 @@ package org.synergy.prp_ts.administrators;
 
 import org.synergy.prp_ts.DAO.VenueDao;
 import org.synergy.prp_ts.beans.VenueDetails;
-
+/**
+ *
+ * @author RajeshKumar
+ */
 public class VenueAdmin {
     
     public static int addVenue(String venueName){

@@ -5,7 +5,10 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.synergy.prp_ts.beans.TrainerDetails;
 import org.synergy.prp_ts.util.HibernateUtil;
-
+/**
+ *
+ * @author Harishkumar
+ */
 public class TrainerDao {
     
     private static Session session;

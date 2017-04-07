@@ -10,7 +10,7 @@ import org.synergy.prp_ts.beans.TrainerDetails;
 
 /**
  *
- * @author Arun
+ * @author RajeshKumar
  */
 public class TrainerAdmin {
     

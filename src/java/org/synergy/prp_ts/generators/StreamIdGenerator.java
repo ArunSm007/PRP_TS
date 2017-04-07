@@ -8,12 +8,11 @@ import java.sql.Statement;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.IdentifierGenerator;
-
 /**
  *
  * @author Harishkumar
  */
-public class CategoryIdGenerator implements IdentifierGenerator{
+public class StreamIdGenerator implements IdentifierGenerator{
     
     @Override
     public Serializable generate(SessionImplementor sessionImplementor,Object data)
@@ -23,17 +22,16 @@ public class CategoryIdGenerator implements IdentifierGenerator{
         Statement statement = null;
         ResultSet resultSet = null;
         try {
-            String prefix = "CID_";
+            String prefix = "SID_";
             connection = sessionImplementor.connection();
             statement = connection.createStatement();                   
              try {  
-                 resultSet = statement.executeQuery("select category_seq.nextval from dual");
+                 resultSet = statement.executeQuery("select stream_seq.nextval from dual");
              } catch(Exception ex) {
-                 // if sequence is not found then creating the sequence
                  statement = connection.createStatement();
-                 statement.execute("create sequence category_seq start with 001 nocycle nocache increment by 1");
+                 statement.execute("create sequence stream_seq start with 001 nocycle nocache increment by 1");
                  System.out.println("Sequece Created successfully.");
-                 resultSet = statement.executeQuery("select category_seq.nextval from dual");
+                 resultSet = statement.executeQuery("select stream_seq.nextval from dual");
              }
             
             if(resultSet.next()) {
@@ -46,7 +44,6 @@ public class CategoryIdGenerator implements IdentifierGenerator{
             e.printStackTrace();
         }
         return result;
-
     }
     
 }

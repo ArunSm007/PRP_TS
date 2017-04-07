@@ -16,7 +16,7 @@ import org.hibernate.id.IdentifierGenerator;
 
 /**
  *
- * @author Arun
+ * @author Harishkumar
  */
 public class VenueIdGenerator implements IdentifierGenerator{
     

@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 
 /**
  *
- * @author Arun
+ * @author Mathankumar
  */
 public class HibernateUtil {
     private static Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
