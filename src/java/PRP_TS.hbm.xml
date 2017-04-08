@@ -8,7 +8,7 @@
  
   <class name="org.synergy.prp_ts.beans.LoginDetails" table="LoginDetails" lazy="false">
        <id name="userName">
-           <generator class="assigned"></generator>
+           <generator class="increment"></generator>
        </id>  
       <property name="password"></property>   
       <property name="type"></property>
@@ -22,20 +22,14 @@
         <generator class="increment"></generator>  
     </id>  
     <property name="assessmentName"></property> 
-  </class> 
+  </class>
  
   <class name="org.synergy.prp_ts.beans.SubModuleDetails" table="SubModuleDetails">
       <id name="subModuleId">
           <generator class="increment"></generator>   
       </id>
       <property name="subModuleName"></property>
-      <property name="miniprojectDuration"></property>
-      <property name="practiceDuration"></property>
-      <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
-            <key column="subModuleId" />
-            <index column="type"/>
-            <one-to-many class="org.synergy.prp_ts.beans.AssessmentDetails"/>
-      </list>
+      <property name="assessmentId"></property>
   </class>  
  
    <class name="org.synergy.prp_ts.beans.ModuleDetails" table="ModuleDetails">
@@ -43,18 +37,22 @@
            <generator class="increment"></generator>
        </id>
        <property name="moduleName"></property>
-       <property name="logicalBuildingDuration"></property>
-       <property name="moduleDuration"></property>
-       <list name="assessments" cascade="save-update,delete,delete-orphan" lazy="false">
-            <key column="moduleId" />
-            <index column="type"/>
-            <one-to-many class="org.synergy.prp_ts.beans.AssessmentDetails"/>
-        </list>
+       <property name="assessmentId"></property>
         <list name="subModules" cascade="save-update,delete,delete-orphan" lazy="false">
             <key column="moduleId" />
             <index column="type"/>
             <one-to-many class="org.synergy.prp_ts.beans.SubModuleDetails"/>
         </list>
+   </class>
+   
+   <class name="org.synergy.prp_ts.beans.BatchDurationDetails" table="TrainingDetails">
+      <id name="pno">
+          <generator class="increment"></generator>
+      </id>
+      <property name="batchId" insert="false"></property>
+      <property name="startDate" type="date"></property>
+      <property name="endDate" type="date"></property>
+      <property name="acticityId"></property>
    </class>
    
    <class name="org.synergy.prp_ts.beans.TrainingDetails" table="TrainingDetails">
@@ -82,7 +80,12 @@
     <id name="batchId">  
         <generator class="assigned"></generator>  
     </id>  
-    <property name="batchSize"></property> 
+    <property name="batchSize"></property>
+    <list name="batchDurationDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+        <key column="batchId" />
+        <index column="type"/>
+        <one-to-many class="org.synergy.prp_ts.beans.BatchDetails"/>
+    </list> 
     <list name="batchEmployeeDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
         <key column="batchId" />
         <index column="type"/>
@@ -116,6 +119,7 @@
         <generator class="org.synergy.prp_ts.generators.StreamIdGenerator"></generator>  
     </id>  
     <property name="streamName"></property>
+    <property name="categoryId" insert="false"></property>
     <list name="moduleDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
         <key column="streamId" />
         <index column="type"/>
@@ -127,7 +131,12 @@
     <id name="categoryId">  
         <generator class="org.synergy.prp_ts.generators.CategoryIdGenerator"></generator>  
     </id>  
-    <property name="categoryName"></property> 
+    <property name="categoryName"></property>
+    <list name="streamDetailses" cascade="save-update,delete,delete-orphan" lazy="false">
+        <key column="categoryId" />
+        <index column="type"/>
+        <one-to-many class="org.synergy.prp_ts.beans.StreamDetails"/>
+    </list> 
   </class>
   
   <class name="org.synergy.prp_ts.beans.VenueDetails" table="VenueDetails" >
@@ -143,15 +152,7 @@
        </id>
        <property name="name"></property>
   </class>
-  
-  <class name="org.synergy.prp_ts.beans.CategoryStreamDetails" table="CategoryStreamDetails">
-       <id name="sno">
-           <generator class="increment"></generator>
-       </id>
-       <property name="categoryId"></property>
-       <property name="streamId"></property>
-  </class>
-  
+    
   <class name="org.synergy.prp_ts.beans.ScheduleDetails" table="ScheduleDetails">
        <id name="sno">
            <generator class="increment"></generator>

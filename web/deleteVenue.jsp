@@ -247,7 +247,7 @@
                     <div class="form-group">
                         <label for="venueName" class="control-label col-xs-3">Venue Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="venueName" name="venueName" class="form-control">
+                            <input type="text" id="venueName" name="venueName" class="form-control" required>
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="deleteVenue">

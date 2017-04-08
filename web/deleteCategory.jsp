@@ -247,7 +247,7 @@
                     <div class="form-group">
                         <label for="categoryName" class="control-label col-xs-3">Category Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="categoryName" name="categoryName" class="form-control">
+                            <input type="text" id="categoryName" name="categoryName" class="form-control" required>
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="deleteCategory">

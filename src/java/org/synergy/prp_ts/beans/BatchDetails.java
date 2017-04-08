@@ -4,14 +4,24 @@
  */
 package org.synergy.prp_ts.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BatchDetails {
 
 	private String batchId;
 	private int batchSize;
-	private List<BatchEmployeeDetails> batchEmployeeDetailses;
-        private List<BatchHandlingFaculties> batchHandlingFacultieses;
+	private List<BatchEmployeeDetails> batchEmployeeDetailses = new ArrayList<>();
+        private List<BatchHandlingFaculties> batchHandlingFacultieses = new ArrayList<>();
+        private List<BatchDurationDetails> batchDurationDetailses = new ArrayList<>();
+
+        public List<BatchDurationDetails> getBatchDurationDetailses() {
+            return batchDurationDetailses;
+        }
+
+        public void setBatchDurationDetailses(List<BatchDurationDetails> batchDurationDetailses) {
+            this.batchDurationDetailses = batchDurationDetailses;
+        }
 
         public String getBatchId() {
             return batchId;
@@ -50,10 +60,6 @@ public class BatchDetails {
 		throw new UnsupportedOperationException();
 	}
 
-	/**
-	 * 
-	 * @param details
-	 */
 	public void setAll(String[] details) {
 		// TODO - implement BatchDetails.setAll
 		throw new UnsupportedOperationException();

@@ -4,11 +4,23 @@
  */
 package org.synergy.prp_ts.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CategoryDetails {
 
     private String categoryId;
     private String categoryName;
+    private List<StreamDetails> streamDetailses = new ArrayList<>();
 
+    public List<StreamDetails> getStreamDetailses() {
+        return streamDetailses;
+    }
+
+    public void setStreamDetailses(List<StreamDetails> streamDetailses) {
+        this.streamDetailses = streamDetailses;
+    }
+    
     public String getCategoryId() {
         return categoryId;
     }
@@ -24,8 +36,6 @@ public class CategoryDetails {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
-    
 
     public String[] getAll() {
             // TODO - implement CategoryDetails.getAll

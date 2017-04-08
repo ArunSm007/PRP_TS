@@ -19,145 +19,107 @@
             html,body,#main-content{
                 height: 100%;
             }
+            .table > tbody > tr > td{
+                border-top: none;
+                vertical-align: inherit;
+            }
+           ::-webkit-scrollbar { 
+                display: none; 
+            }
+            #submit {
+                position: fixed;
+                top: 70px;
+                right: 30px;
+            }
+            .close{
+                top: 7px !important;
+                right: -5px !important;
+                color: black !important;
+            }
+            a:hover{
+                cursor: pointer;
+                text-decoration: none;
+            }
         </style>
         <script type="text/javascript">
             
-            function addModule(x) {
-                x = document.getElementById(x);
-                var len = document.getElementsByName('module').length;
-                x = x.cloneNode(true);
-                x.id = x.id+len;
-                var ch = x.getElementsByTagName('input');
-                for(var i = 0;i < ch.length;i++)
-                    ch[i].value = '';
-                ch = x.getElementsByTagName('div');
-                var subMod;
-                for(var i = 0;i < ch.length;i++){
-                    if(ch[i].getAttribute('name') === 'subModule')
-                        subMod = ch[i];
-                    else if(ch[i].getAttribute('name') === 'moduleActivity')
-                        ch[i].innerHTML = '';
-                }
-                subMod.innerHTML = "<div class=\"row\" name = \"subModuleDetails\" style=\"border: 1px solid rgb(20, 184, 206);padding: 10px;margin-bottom: 10px;\"><div><div class=\"form-group col-xs-6\"><label for=\"subModuleName\" class=\"control-label col-xs-6\">Submodule Name</label><div class=\"col-xs-4\"><input type=\"text\" name=\"subModuleName\" class=\"form-control\"></div></div><div class=\"row\" name=\"subModuleActivity\"></div><div class=\"row\"><button type=\"button\" onclick=\"addActivity(this.parentElement.parentElement,'subModuleActivity')\" class=\"btn btn-primary\">Add Activity</button></div></div>";
-                document.getElementById('ModuleForm').appendChild(x);
+            function addModule() {
+                x = document.getElementById('moduleTable');
+                var tableBody = x.getElementsByTagName('tbody')[0];
+                var tableRow = document.createElement('tr');
+                tableRow.className = "alert alert-dismissible";
+                tableRow.setAttribute('role','alert');
+                tableRow.innerHTML = "<td class=\"col-xs-1\" > <span class=\"badge\" style=\"background: black;\">"+(tableBody.rows.length+1)+"</span> </td> <td> <div name=\"module\" class=\"panel panel-info\" style=\"border: 1px solid black;margin: 0;color: black;\"> <div name = \"moduleDetails\" class=\"panel-heading\" style=\"padding: 0;\" data-toggle = \"collapse\" href = \"#"+(tableBody.rows.length+1)+"\"> <div class=\"row\" style=\"padding: 0;margin: 0;\"> <div class=\"col-xs-3\"></div> <div class=\"form-group col-xs-6 text-left\" style=\"padding: 2px;margin: 0;\"> <label for=\"moduleName\" class=\"control-label col-xs-3\" style=\"padding: 4px;\">Module Name</label> <div class=\"col-xs-9\"> <input type=\"text\" name=\"moduleName\" class=\"form-control\" required> </div> </div> <div class=\"col-xs-3\"> <button type=\"button\" onclick=\"setSno(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button> </div> </div> </div> <div class=\"collapse\" id=\""+(tableBody.rows.length+1)+"\"> <div class=\"panel-body\" style=\"border-top: 1px solid black;\"> <table class=\"table table-condensed table-bordered\"> <thead> <tr> <th>SNo</th> <th class=\"text-center\">Submodule Name</th> <th class=\"text-center\">Assessment Details</th> <th style=\"border: 1px solid white;\"></th> </tr> </thead> <tbody> <tr class=\"alert alert-dismissible\" role=\"alert\"> <td><span class=\"badge\">1</span></td> <td> <input type=\"text\" name=\"subModuleName\" class=\"form-control\" required> </td> <td> <div class=\"input-group\"> <span class=\"input-group-addon\"><input type=\"checkbox\" onchange=\"updateCheck(this);\" style=\"margin: 4px;\"></span> <input type=\"text\" name=\"subModuleAssessmentName\" disabled placeholder=\"Assessment Name\" class=\"form-control\"> </div> </td> <td style=\"border: 1px solid white;\"> <a type=\"button\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\"onclick=\"setSno(this.parentElement.parentElement.parentElement);\">&times;</span></a> </td> </tr> </tbody> </table> <div class=\"text-center\"> <button class=\"btn-info\" onclick=\"addSubModule(this.parentElement.previousElementSibling);return false;\">Add Submodule</button> </div> </div> <div class=\"panel-footer\" style=\"padding: 4px;border-top:1px solid black; \"> <div class=\"input-group col-xs-6 col-xs-offset-3\"> <span class=\"input-group-addon\"><input type=\"checkbox\" onchange=\"updateCheck(this);\" style=\"margin: 4px;\"></span> <input type=\"text\" name=\"assessmentName\" disabled placeholder=\"Assessment Name\" class=\"form-control\"> </div> </div> </div> </div> </td>";
+                tableBody.appendChild(tableRow);    
             }
-            function addSubModule(x){
-                var module = document.getElementById(x);
-                var divs = module.getElementsByTagName('div');
-                var subModule;
-                for(var i = 0;i < divs.length;i++){
-                    if(divs[i].getAttribute('name') === 'subModule')
-                        subModule = divs[i];
-                }
-                var subMod = subModule.getElementsByTagName('div')[0].cloneNode(true);
-                var inp = subMod.getElementsByTagName('input');
-                for(var i = 0;i < inp.length;i++){
-                    inp[i].value = '';
-                }
-                for(var i = 0;i < subMod.getElementsByTagName('div').length;i++)
-                    if(subMod.getElementsByTagName('div')[i].getAttribute('name') === 'subModuleActivity')
-                        subMod.getElementsByTagName('div')[i].innerHTML = '';
-                subModule.appendChild(subMod);
-            }
-            
-            function addActivity(t,identifier){
-                var mod = t;
-                var ch = mod.getElementsByTagName('div');
-                var x;
-                for(var i = 0;i < ch.length;i++){
-                    if(ch[i].getAttribute('name') === identifier){
-                        x = ch[i];
-                        break;
-                    }
-                }
-                if(x.getElementsByTagName('select').length == 0){
-                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th></tr></thead><tbody><tr><td><select name=\"subModAct\" class=\"form-control\"><option value=\"MP\">MiniProject</option><option value=\"PC\">Practice</option></select></td></tr></tbody></table></div>"
-                    x.innerHTML = innerString;
-                }
-                else{
-                    var tab = x.getElementsByTagName('table')[0].getElementsByTagName('tbody')[0];
-                    var cnode = tab.getElementsByTagName('tr')[0].cloneNode(true);
-                    cnode.getElementsByTagName('input')[0].value = '';
-                    tab.appendChild(cnode);
-                }
-        	}
 
-            function addModuleActivity(t,identifier){
-                var mod = t;
-                var ch = mod.getElementsByTagName('div');
-                var x;
-                for(var i = 0;i < ch.length;i++){
-                    if(ch[i].getAttribute('name') === identifier){
-                        x = ch[i];
-                        break;
-                    }
-                }
-                if(x.getElementsByTagName('select').length == 0){
-                    var innerString = "<div class=\"col-xs-4 col-xs-offset-4\" style=\"padding-bottom: 5px;\"><table class=\"table table-bordered\" style=\"margin: 0;\"><thead><tr><th>Activity Name</th></tr></thead><tbody><tr><td><input type=\"text\" name=\"modActDuration\" class=\"form-control\"></td></tr></tbody></table></div>";
-                    x.innerHTML = innerString;
-                }
-                else{
-                    var tab = x.getElementsByTagName('table')[0].getElementsByTagName('tbody')[0];
-                    var cnode = tab.getElementsByTagName('tr')[0].cloneNode(true);
-                    cnode.getElementsByTagName('input')[0].value = '';
-                    tab.appendChild(cnode);
-                }
+            function addSubModule(subModule){
+                var tableBody = subModule.getElementsByTagName('tbody')[0];
+                var tableRow = document.createElement('tr');
+                tableRow.className = "alert alert-dismissible";
+                tableRow.setAttribute('role','alert');
+                tableRow.innerHTML = "<td><span class=\"badge\">"+(tableBody.rows.length+1)+"</span></td> <td> <input type=\"text\" name=\"subModuleName\" class=\"form-control\" required> </td> <td> <div class=\"input-group\"> <span class=\"input-group-addon\"><input type=\"checkbox\" onchange=\"updateCheck(this);\" style=\"margin: 4px;\"></span> <input type=\"text\" name=\"subModuleAssessmentName\" disabled placeholder=\"Assessment Name\" class=\"form-control\"> </div> </td> <td style=\"border: 1px solid white;\"> <a type=\"button\" data-dismiss=\"alert\" aria-label=\"Close\"><span onclick=\"setSno(this.parentElement.parentElement.parentElement);\" aria-hidden=\"true\">&times;</span></a> </td>";
+                tableBody.appendChild(tableRow);
             }
+
             function jsonParse(){
-                var jsonString = { "modules" : [{}] };
-                var modules = document.getElementsByName('module');
+                var jsonString = { "modules" : [] };
+                var modules = document.getElementById('moduleTable').rows;
                 var subMod;
-                var allDiv;
+                var allDivs;
+                var allInp;
+                var subModules;
                 for(var i = 0;i < modules.length;i++){
                     jsonString.modules[i] = {};
-                    jsonString.modules[i].subModules = [];
-                    allDiv = modules[i].getElementsByTagName('div');
-                    for(var j = 0;j < allDiv.length;j++){
-                        if(allDiv[j].getAttribute('name') === 'moduleDetails'){
-                            var subDivs = allDiv[j].getElementsByTagName('input');
-                            for(var k = 0;k < subDivs.length;k++){
-                                if(subDivs[k].getAttribute('name') === 'moduleName')
-                                    jsonString.modules[i].name = subDivs[k].value;
-                            }
-                        }
-                        else if(allDiv[j].getAttribute('name') === 'subModule'){
-                            var divlength;
-                            var divs = allDiv[j].getElementsByTagName('div');
+                    allDivs = modules[i].cells[1].getElementsByTagName('div');
+                    for(var j = 0;j < allDivs.length;j++){
+                       if(allDivs[j].className === 'panel-heading'){
+                            jsonString.modules[i].name = allDivs[j].getElementsByTagName('input')[0].value;    
+                       }
+                       else if(allDivs[j].className === 'panel-body'){
+                            subModules = allDivs[j].getElementsByTagName('tbody')[0].rows;
                             jsonString.modules[i].subModules = [];
-                            for(var l = 0;l < divs.length;l++){
-                                if(divs[l].getAttribute('name') === 'subModuleDetails'){
-                                    var rowInp = allDiv[j].getElementsByTagName('input');
-                                    var rowSelect = allDiv[j].getElementsByTagName('select');
-                                    divlength = jsonString.modules[i].subModules.length;
-                                    jsonString.modules[i].subModules[divlength] = {};
-                                    jsonString.modules[i].subModules[divlength].name = rowInp[0].value;
-                                    jsonString.modules[i].subModules[divlength].activities = [];
-                                    for(var k = 1;k < rowInp.length;k++){
-                                        jsonString.modules[i].subModules[divlength].activities[k-1] = {};
-                                        jsonString.modules[i].subModules[divlength].activities[k-1].activityType = rowSelect[k-1].value;
-                                        jsonString.modules[i].subModules[divlength].activities[k-1].activityDuration = rowInp[k].value;
-                                    }
+                            for(var k = 0;k < subModules.length;k++){
+                                jsonString.modules[i].subModules[k] = {};
+                                allInp = subModules[k].getElementsByTagName('input');
+                                jsonString.modules[i].subModules[k].name = allInp[0].value;
+                                if(allInp[1].checked){
+                                    jsonString.modules[i].subModules[k].assessmentName = allInp[2].value;
                                 }
                             }
-                        }
-                        else if(allDiv[j].getAttribute('name') === 'moduleActivity'){
-                            jsonString.modules[i].activities = [];
-                            var rowInp = allDiv[j].getElementsByTagName('input');
-                            var rowSelect = allDiv[j].getElementsByTagName('select');
-                            for(var k = 0;k < rowInp.length;k++){
-                                jsonString.modules[i].activities[k] = {};
-                                jsonString.modules[i].activities[k].activityType = rowSelect[k].value;
-                                jsonString.modules[i].activities[k].activityDuration = rowInp[k].value;
-                            }
-                        }
-                    } 
+                       }
+                       else if(allDivs[j].className === 'panel-footer'){
+                            allInp = allDivs[j].getElementsByTagName('input');
+                            if(allInp[0].checked)
+                                jsonString.modules[i].assessmentName = allInp[1].value;
+                       }
+                    }
                 }
                 var inp = document.createElement('input');
                 inp.setAttribute('type','hidden');
                 inp.setAttribute('name','jsonString');
                 inp.setAttribute('value',JSON.stringify(jsonString));
                 document.getElementById('mainForm').appendChild(inp);
-                alert(JSON.stringify(jsonString));
+            }
+
+            function updateCheck(x){
+                if(x.checked){
+                    x.parentElement.nextElementSibling.setAttribute('required',"required");
+                    x.parentElement.nextElementSibling.removeAttribute('disabled');
+                }
+                else{
+                    x.parentElement.nextElementSibling.removeAttribute('required');
+                    x.parentElement.nextElementSibling.disabled = 'disabled';
+                }
+            }
+
+            function setSno(tableRow){
+                var num = tableRow.getElementsByTagName('td')[0].getElementsByTagName('span')[0].innerHTML;
+                while(tableRow.nextElementSibling != null){
+                    tableRow.nextElementSibling.getElementsByTagName('td')[0].getElementsByTagName('span')[0].innerHTML = (num);
+                    tableRow = tableRow.nextElementSibling;
+                    num++;
+                }
             }
         </script>
     </head>
@@ -378,7 +340,7 @@
         </nav>
         
         <!-- Main Content -->
-        <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;overflow-y: hidden,scroll;height: auto;min-height: 100%;" id="main-content">
+        <div class="container-fluid bg-primary" id="mainPage" style="padding-top: 70px;padding-bottom: 70px;overflow-y: hidden,scroll;height: auto;min-height: 100%;" id="main-content">
             <div class="row col-xs-12 text-center" style="height: 100%;padding: 0;margin: 0;">
                 <form class="col-xs-10 col-xs-offset-1 form-horizaontal" action="MainServlet" id="mainForm" method="post">
                     <div id="ModuleForm">
@@ -406,50 +368,83 @@
                             </div>
                         </div>
                     </div>
-                    <div id="module" name="module" class="row" style="border: 1px solid black;padding: 20px;margin-top: 20px;">
-                        <div name = "moduleDetails">
-                            <div class="form-group col-xs-6">
-                                <label for="moduleName" class="control-label col-xs-6">Module Name</label>
-                                <div class="col-xs-4">
-                                    <input type="text" name="moduleName" class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div name="subModule" class="row col-xs-10 col-xs-offset-1" >
-                            <div class="row" name = "subModuleDetails" style="border: 1px solid rgb(20, 184, 206);padding: 10px;margin-bottom: 10px;">
-                                <div>
-                                    <div class="form-group col-xs-6">
-                                        <label for="subModuleName" class="control-label col-xs-6">Submodule Name</label>
-                                        <div class="col-xs-4">
-                                            <input type="text" name="subModuleName" class="form-control" required>
+                    <table class="table table-responsive" id="moduleTable">
+                        <tbody>
+                            <tr class="alert alert-dismissible" role="alert">
+                                <td class="col-xs-1" >
+                                    <span class="badge" style="background: black;">1</span>
+                                </td>
+                                <td>
+                                    <div name="module" class="panel panel-info" style="border: 1px solid black;margin: 0;color: black;">
+                                        <div name = "moduleDetails" class="panel-heading" style="padding: 0;" data-toggle = "collapse" href = '#1'>
+                                            <div class="row" style="padding: 0;margin: 0;">
+                                                <div class="col-xs-3"></div>
+                                                <div class="form-group col-xs-6 text-left" style="padding: 2px;margin: 0;">
+                                                <label for="moduleName" class="control-label col-xs-3" style="padding: 4px;">Module Name</label>
+                                                <div class="col-xs-9">
+                                                    <input type="text" name="moduleName" class="form-control" required>
+                                                </div>
+                                                </div>
+                                                <div class="col-xs-3">
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="setSno(this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement);"><span aria-hidden="true">&times;</span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="collapse" id = '1'>
+                                        <div class="panel-body" style="border-top: 1px solid black;">
+                                            <table class="table table-condensed table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>SNo</th>
+                                                        <th class="text-center">Submodule Name</th>
+                                                        <th class="text-center">Assessment Details</th>
+                                                        <th style="border: 1px solid white;"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="alert alert-dismissible" role="alert">
+                                                        <td><span class="badge">1</span></td>
+                                                        <td>
+                                                            <input type="text" name="subModuleName" class="form-control" required>
+                                                        </td>
+                                                        <td>
+                                                            <div class="input-group">
+                                                                <span class="input-group-addon"><input type="checkbox" onchange="updateCheck(this);" style="margin: 4px;"></span>
+                                                                <input type="text" name="subModuleAssessmentName" disabled placeholder="Assessment Name" class="form-control">
+                                                            </div>
+                                                        </td>
+                                                        <td style="border: 1px solid white;">
+                                                            <a type="button" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" onclick="setSno(this.parentElement.parentElement.parentElement);">&times;</span></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="text-center">
+                                                <button class="btn-info" onclick="addSubModule(this.parentElement.previousElementSibling);return false;">Add Submodule</button>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer" style="padding: 4px;border-top:1px solid black; ">
+                                            <div class="input-group col-xs-6 col-xs-offset-3">
+                                                <span class="input-group-addon"><input type="checkbox" onchange="updateCheck(this);" style="margin: 4px;"></span>
+                                                <input type="text" name="assessmentName" disabled placeholder="Assessment Name" class="form-control">
+                                            </div>
+                                        </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row" name="subModuleActivity">
-                                    
-                                </div>
-                                <div class="row">
-                                    <button type="button" onclick="addActivity(this.parentElement.parentElement,'subModuleActivity')" class="btn btn-primary">Add Activity</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div name="moduleActivity" class="row">
-                            
-                        </div>
-                        <div class="row">
-                            <button type="button" onclick="addSubModule(this.parentElement.parentElement.id);" class="btn btn-primary">Add Submodule</button>
-                            <button type="button" onclick="addModuleActivity(this.parentElement.parentElement,'moduleActivity');"  class="btn btn-primary">Add Activity</button>
-                        </div>
-                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
                     </div>
                     <div class="row text-center">
-                        <button type="button" class="btn btn-info" style="margin-top: 10px;margin-bottom: 70px;" onclick="addModule('module')">
+                        <button type="button" class="btn btn-info" style="margin-top: 10px;margin-bottom: 70px;" onclick="addModule()">
                             <span class="glyphicon glyphicon-plus" style="font-size: 20px;"></span>
                         </button>
                     </div>
                     <div class="row">
                         <input type="hidden" class="btn btn-success" value="addStream" name="action">
-                        <input type="submit" class="btn btn-success" onclick="jsonParse(); return false;">
+                        <input type="submit" id="submit" class="btn btn-success" onclick="jsonParse();" value="Save">
                     </div>
                 </form>
             </div>

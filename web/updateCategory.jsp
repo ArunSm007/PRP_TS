@@ -247,13 +247,13 @@
                     <div class="form-group">
                         <label for="currentCategoryName" class="control-label col-xs-3">Current Category Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="currentVenueName" name="currentCategoryName" class="form-control">
+                            <input type="text" id="currentVenueName" name="currentCategoryName" class="form-control" required>
                         </div> 
                     </div>
                     <div class="form-group">
                         <label for="newCategoryName" class="control-label col-xs-3">New Category Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="newCategoryName" name="newCategoryName" class="form-control">
+                            <input type="text" id="newCategoryName" name="newCategoryName" class="form-control" required>
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="updateCategory">

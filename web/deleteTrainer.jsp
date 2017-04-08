@@ -247,10 +247,10 @@
                     <div class="form-group">
                         <label for="trainerId" class="control-label col-xs-3">Trainer Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="wcfId" name="wcfId" class="form-control">
+                            <input type="text" id="wcfId" name="wcfId" class="form-control" required>
                         </div> 
                     </div>
-                    <input type="hidden" name="action" value="deleteTrainer">
+                    <input type="hidden" name="action" value="deleteTrainer" >
                     <input type="submit" class="btn btn-default btn-primary" value="Remove">
                 </form>
                 ${trainerId}

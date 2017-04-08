@@ -7,8 +7,16 @@ public class StreamDetails {
 
     private String streamId;
     private String streamName;
-    
+    private String categoryId;
     private List<ModuleDetails> moduleDetailses = new ArrayList<>();
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
 
     public List<ModuleDetails> getModuleDetailses() {
         return moduleDetailses;

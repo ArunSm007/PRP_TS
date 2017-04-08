@@ -4,92 +4,93 @@
  */
 package org.synergy.prp_ts.beans;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class TrainingDetails {
 
-	private String trainingId;
-	private String categoryId;
-	private String streamId;
-        private String venueId;
-        private List<BatchDetails> batchDetailses;
-        private List<ScheduleDetails> scheduleDetailses;
-	private Date fromDate;
-	private Date toDate;
+    private String trainingId;
+    private String categoryId;
+    private String streamId;
+    private String venueId;
+    private List<BatchDetails> batchDetailses = new ArrayList<>();
+    private List<ScheduleDetails> scheduleDetailses= new ArrayList<>();;
+    private Date fromDate;
+    private Date toDate;
 
-        public List<ScheduleDetails> getScheduleDetailses() {
-            return scheduleDetailses;
-        }
+    public List<ScheduleDetails> getScheduleDetailses() {
+        return scheduleDetailses;
+    }
 
-        public void setScheduleDetailses(List<ScheduleDetails> scheduleDetailses) {
-            this.scheduleDetailses = scheduleDetailses;
-        }
+    public void setScheduleDetailses(List<ScheduleDetails> scheduleDetailses) {
+        this.scheduleDetailses = scheduleDetailses;
+    }
 
-        public String getVenueId() {
-            return venueId;
-        }
+    public String getVenueId() {
+        return venueId;
+    }
 
-        public void setVenueId(String venueId) {
-            this.venueId = venueId;
-        }
+    public void setVenueId(String venueId) {
+        this.venueId = venueId;
+    }
 
-        public List<BatchDetails> getBatchDetailses() {
-            return batchDetailses;
-        }
+    public List<BatchDetails> getBatchDetailses() {
+        return batchDetailses;
+    }
 
-        public void setBatchDetailses(List<BatchDetails> batchDetailses) {
-            this.batchDetailses = batchDetailses;
-        }
-        
-        public String getTrainingId() {
-            return trainingId;
-        }
+    public void setBatchDetailses(List<BatchDetails> batchDetailses) {
+        this.batchDetailses = batchDetailses;
+    }
 
-        public void setTrainingId(String trainingId) {
-            this.trainingId = trainingId;
-        }
+    public String getTrainingId() {
+        return trainingId;
+    }
 
-        public String getCategoryId() {
-            return categoryId;
-        }
+    public void setTrainingId(String trainingId) {
+        this.trainingId = trainingId;
+    }
 
-        public void setCategoryId(String categoryId) {
-            this.categoryId = categoryId;
-        }
+    public String getCategoryId() {
+        return categoryId;
+    }
 
-        public String getStreamId() {
-            return streamId;
-        }
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
 
-        public void setStreamId(String streamId) {
-            this.streamId = streamId;
-        }
+    public String getStreamId() {
+        return streamId;
+    }
 
-        public Date getFromDate() {
-            return fromDate;
-        }
+    public void setStreamId(String streamId) {
+        this.streamId = streamId;
+    }
 
-        public void setFromDate(Date fromDate) {
-            this.fromDate = fromDate;
-        }
+    public Date getFromDate() {
+        return fromDate;
+    }
 
-        public Date getToDate() {
-            return toDate;
-        }
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
 
-        public void setToDate(Date toDate) {
-            this.toDate = toDate;
-        }
+    public Date getToDate() {
+        return toDate;
+    }
 
-	public String[] getAll() {
-		// TODO - implement TrainingDetails.getAll
-		throw new UnsupportedOperationException();
-	}
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
 
-	public void setAll(String[] details) {
-		// TODO - implement TrainingDetails.setAll
-		throw new UnsupportedOperationException();
-	}
+    public String[] getAll() {
+            // TODO - implement TrainingDetails.getAll
+            throw new UnsupportedOperationException();
+    }
+
+    public void setAll(String[] details) {
+            // TODO - implement TrainingDetails.setAll
+            throw new UnsupportedOperationException();
+    }
 
 }

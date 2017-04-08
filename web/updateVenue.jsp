@@ -247,13 +247,13 @@
                     <div class="form-group">
                         <label for="currentVenueName" class="control-label col-xs-3">Current Venue Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="currentVenueName" name="currentVenueName" class="form-control">
+                            <input type="text" id="currentVenueName" name="currentVenueName" class="form-control" required>
                         </div> 
                     </div>
                     <div class="form-group">
                         <label for="newVenueName" class="control-label col-xs-3">New Venue Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="newVenueName" name="newVenueName" class="form-control">
+                            <input type="text" id="newVenueName" name="newVenueName" class="form-control" required>
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="updateVenue">

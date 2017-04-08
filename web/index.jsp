@@ -40,10 +40,10 @@
                 <div class="collapse navbar-collapse" id="nav1">
                     <form action="MainServlet" method="post" class="navbar-form navbar-right">
                         <div class="form-group">
-                            <input type="text" id="username" name="" class="form-control" placeholder="Username">
+                            <input type="text" id="username" name="" class="form-control" placeholder="Username" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" id="username" name="" class="form-control" placeholder="Password">
+                            <input type="password" id="username" name="" class="form-control" placeholder="Password" required>
                         </div>
                         <button type="submit" class="btn btn-default">Sign in</button>
                     </form>                    

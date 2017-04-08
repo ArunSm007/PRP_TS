@@ -86,19 +86,19 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="" title="">
+                                    <a href="addTrainer.jsp" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Trainer
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="updateTrainer.jsp" title="">
                                         <span class="glyphicon glyphicon-retweet"></span>
                                         &nbsp;Update Trainer
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="deleteTrainer.jsp" title="">
                                         <span class="glyphicon glyphicon-trash"></span>
                                         &nbsp;Remove Trainer
                                     </a>
@@ -150,7 +150,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="" title="">
+                                    <a href="addStream.jsp" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Stream
                                     </a>
@@ -183,19 +183,19 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="" title="">
+                                    <a href="addCategory.jsp" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Category
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="updateCategory.jsp" title="">
                                         <span class="glyphicon glyphicon-wrench"></span>
                                         &nbsp;Update Category
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="deleteCategory.jsp" title="">
                                         <span class="glyphicon glyphicon-trash"></span>
                                         &nbsp;Remove Category
                                     </a>
@@ -216,19 +216,19 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="" title="">
+                                    <a href="addVenue.jsp" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Venue
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="updateVenue.jsp" title="">
                                         <span class="glyphicon glyphicon-wrench"></span>
                                         &nbsp;Update Venue
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="deleteVenue.jsp" title="">
                                         <span class="glyphicon glyphicon-trash"></span>
                                         &nbsp;Remove Venue
                                     </a>
@@ -243,12 +243,7 @@
         <!-- Main Content -->
         <div class="container-fluid bg-primary" style="padding-top: 70px;padding-bottom: 70px;" id="main-content">
             <div class="row" style="height: 100%;">
-                <div class="col-sm-3 col-md-2 hidden-xs bg-success well" style="height: 100%;margin-left: 10px;">
-                    
-                </div>
-                <div class="col-sm-9 col-md-10 col-md-offset-2">
-                    
-                </div>
+                
             </div>
         </div>
         

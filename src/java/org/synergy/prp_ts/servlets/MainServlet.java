@@ -16,12 +16,15 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.synergy.prp_ts.DAO.AssessmentDao;
+import org.synergy.prp_ts.DAO.StreamDao;
 import org.synergy.prp_ts.administrators.CategoryAdmin;
 import org.synergy.prp_ts.administrators.TrainerAdmin;
 import org.synergy.prp_ts.administrators.VenueAdmin;
 import org.synergy.prp_ts.beans.AssessmentDetails;
 import org.synergy.prp_ts.beans.ModuleDetails;
 import org.synergy.prp_ts.beans.StreamDetails;
+import org.synergy.prp_ts.beans.SubModuleDetails;
 /**
  *
  * @author PraveenKumar
@@ -42,27 +45,42 @@ public class MainServlet extends HttpServlet {
         
         
         switch(pageIdentifier){
-            case "addVenue"     :   addVenue(request, response);
+            case "addVenue"         :   addVenue(request, response);
             break;
-            case "addCategory"  :   addCategory(request, response);
+            case "addCategory"      :   addCategory(request, response);
             break;
-            case "addTrainer"   :   addTrainer(request, response);
+            case "addTrainer"       :   addTrainer(request, response);
             break;
-            case "updateVenue"   :   updateVenue(request, response);
+            case "updateVenue"      :   updateVenue(request, response);
             break;
             case "updateCategory"   :   updateCategory(request, response);
             break;
-            case "updateTrainer"   :   updateTrainer(request, response);
+            case "updateTrainer"    :   updateTrainer(request, response);
             break;
-            case "deleteVenue"   :  deleteVenue(request, response);
+            case "deleteVenue"      :   deleteVenue(request, response);
             break;
-            case "deleteCategory"   :  deleteCategory(request, response);
+            case "deleteCategory"   :   deleteCategory(request, response);
             break;
-            case "deleteTrainer"   :  deleteTrainer(request, response);
+            case "deleteTrainer"    :   deleteTrainer(request, response);
             break;
-            case "addStream"   :  addStream(request, response);
+            case "addStream"        :   addStream(request, response);
+            break;
+            case "deleteStream"     :   deleteStream(request, response);
+            break;
+            case "updateStream"     :   updateStream(request, response);
             break;
         }
+    }
+    
+    protected void updateStream(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+    }
+    protected void deleteStream(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String streamId = request.getParameter("streamId");
+        StreamDao.deleteStream(streamId);
+        response.sendRedirect("deleteStream.jsp");
     }
     
     protected void addStream(HttpServletRequest request, HttpServletResponse response)
@@ -75,22 +93,42 @@ public class MainServlet extends HttpServlet {
             JSONArray jSONArray = (JSONArray) ((JSONObject)(jSONParser.parse(jsonString))).get("modules");
             StreamDetails streamDetails = new StreamDetails();
             streamDetails.setStreamName(streamName);
-            List<ModuleDetails> moduleDetailses = streamDetails.getModuleDetailses();
             JSONObject tmpJSONObject;
             JSONArray tmpJSONArray;
             ModuleDetails moduleDetails;
-            List<AssessmentDetails> assessmentDetailses = new ArrayList<>();
+            SubModuleDetails subModuleDetails;
+            String assessmentName;
             for(int i = 0;i < jSONArray.size();i++){
                 tmpJSONObject = (JSONObject) jSONArray.get(i);
                 moduleDetails = new ModuleDetails();
                 moduleDetails.setModuleName((String)tmpJSONObject.get("name"));
-                moduleDetails.setModuleDuration(Integer.parseInt((String)tmpJSONObject.get("duration")));
-                JSONArray tmpAct = ((JSONArray)tmpJSONObject.get("activities"));
-                for(int j = 0;j < tmpAct.size();j++){
+                assessmentName = ((String)tmpJSONObject.get("assessmentName"));
+                if(assessmentName != null){
                     AssessmentDetails assessmentDetails = new AssessmentDetails();
-//                    assessmentDetails.setAssessmentId();
+                    assessmentDetails.setAssessmentName(assessmentName);
+                    AssessmentDao.setAssessmentDetails(assessmentDetails);
+                    moduleDetails.setAssessmentId(assessmentDetails.getAssessmentId());
                 }
+                tmpJSONArray = (JSONArray) tmpJSONObject.get("subModules");
+                if(tmpJSONArray != null){
+                    for(int j = 0;j < tmpJSONArray.size();j++){
+                        tmpJSONObject = (JSONObject) tmpJSONArray.get(j);
+                        subModuleDetails = new SubModuleDetails();
+                        subModuleDetails.setSubModuleName((String) tmpJSONObject.get("name"));
+                        assessmentName = ((String)tmpJSONObject.get("assessmentName"));
+                        if(assessmentName != null){
+                            AssessmentDetails assessmentDetails = new AssessmentDetails();
+                            assessmentDetails.setAssessmentName(assessmentName);
+                            AssessmentDao.setAssessmentDetails(assessmentDetails);
+                            subModuleDetails.setAssessmentId(assessmentDetails.getAssessmentId());
+                        }
+                        moduleDetails.getSubModules().add(subModuleDetails);
+                    }
+                }
+                streamDetails.getModuleDetailses().add(moduleDetails);
             }
+            StreamDao.addStream(streamDetails);
+            response.sendRedirect("addStream.jsp");
         } catch (ParseException ex) {
             Logger.getLogger(MainServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

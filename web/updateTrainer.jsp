@@ -247,13 +247,13 @@
                     <div class="form-group">
                         <label for="wcfId" class="control-label col-xs-3">WCF ID</label>
                         <div class="col-xs-9">
-                            <input type="text" id="wcfId" name="wcfId" class="form-control">
+                            <input type="text" id="wcfId" name="wcfId" class="form-control" required>
                         </div> 
                     </div>
                     <div class="form-group">
                         <label for="trainerName" class="control-label col-xs-3">Trainer Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="trainerName" name="trainerName" class="form-control">
+                            <input type="text" id="trainerName" name="trainerName" class="form-control" required>
                         </div> 
                     </div>
                     <input type="hidden" name="action" value="updateTrainer">

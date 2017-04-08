@@ -4,6 +4,9 @@
     Author     : Arun
 --%>
 
+<%@page import="org.synergy.prp_ts.DAO.StreamDao"%>
+<%@page import="org.synergy.prp_ts.beans.StreamDetails"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,7 +185,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="active">
+                                <li>
                                     <a href="" title="">
                                         <span class="glyphicon glyphicon-plus"></span>
                                         &nbsp;Add Category
@@ -245,16 +248,24 @@
             <div class="row" style="height: 100%;">
                 <form action="MainServlet" method="post" class="col-xs-6 col-xs-offset-3 form-horizontal text-center">
                     <div class="form-group">
-                        <label for="categoryName" class="control-label col-xs-3">Category Name</label>
+                        <label for="streamId" class="control-label col-xs-3">Stream Name</label>
                         <div class="col-xs-9">
-                            <input type="text" id="categoryName" name="categoryName" class="form-control" required>
+                            <select id="streamName" name="streamId" class="form-control" required>
+                                <option selected disabled></option>
+                                <%
+                                    List<StreamDetails> streamDetailses = StreamDao.getAllStreamDetails();
+                                    for(StreamDetails streamDetails : streamDetailses){
+                                %>
+                                <option value="<%=streamDetails.getStreamId() %>"><%=streamDetails.getStreamName()%></option>
+                                <% } %>
+                            </select>
                         </div> 
                     </div>
-                    <input type="hidden" name="action" value="addCategory">
-                    <input type="submit" class="btn btn-default btn-primary" value="Add">
+                    <input type="hidden" name="action" value="deleteStream" >
+                    <input type="submit" class="btn btn-default btn-primary" value="Remove">
                 </form>
-                ${categoryName}
-                ${categoryStatus}
+                ${streamId}
+                ${deleteStatus}
             </div>
         </div>
         
